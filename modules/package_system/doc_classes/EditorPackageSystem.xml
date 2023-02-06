@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="EditorPackageSystem" inherits="Node" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+		System for package management.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_package_status">
+			<return type="int" enum="EditorPackageSystem.PackageStatus" />
+			<param index="0" name="package" type="String" />
+			<description>
+				Get the status of the package.
+			</description>
+		</method>
+		<method name="get_singleton" qualifiers="static">
+			<return type="EditorPackageSystem" />
+			<description>
+				The singleton of this System.
+			</description>
+		</method>
+		<method name="is_package_plugin_enabled">
+			<return type="bool" />
+			<param index="0" name="package" type="String" />
+			<description>
+				Check whether the plugin in the package is enabled.
+			</description>
+		</method>
+		<method name="set_package_plugin_enabled">
+			<return type="void" />
+			<param index="0" name="package" type="String" />
+			<param index="1" name="enabled" type="bool" />
+			<description>
+				Enable or Disable the plugin in the package.
+			</description>
+		</method>
+	</methods>
+	<signals>
+		<signal name="package_has_loaded">
+			<param index="0" name="name" type="String" />
+			<param index="1" name="error" type="String" />
+			<description>
+				When the package is loaded, it will be triggered regardless of success or failure.
+			</description>
+		</signal>
+		<signal name="package_remove_fail">
+			<description>
+				Triggered when package removal fails.
+			</description>
+		</signal>
+		<signal name="package_will_load">
+			<param index="0" name="name" type="String" />
+			<description>
+				Triggered when the package starts to load.
+			</description>
+		</signal>
+		<signal name="packages_reloaded">
+			<description>
+				Triggered when all packages are loaded.
+			</description>
+		</signal>
+	</signals>
+	<constants>
+		<constant name="PACKAGE_NONE" value="0" enum="PackageStatus">
+			The package is not configured.
+		</constant>
+		<constant name="PACKAGE_EXISTS" value="1" enum="PackageStatus">
+			The package is configured, but has not yet been loaded.
+		</constant>
+		<constant name="PACKAGE_LOADED" value="2" enum="PackageStatus">
+			The configured package has been successfully loaded.
+		</constant>
+		<constant name="PACKAGE_ERROR" value="4" enum="PackageStatus">
+			Error occurred during package loading.
+		</constant>
+		<constant name="PACKAGE_REMOVED" value="5" enum="PackageStatus">
+			The package is mark removed.
+		</constant>
+	</constants>
+</class>

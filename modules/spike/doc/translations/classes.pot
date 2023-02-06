@@ -1,0 +1,116 @@
+# LANGUAGE translation of the Spike Engine class reference.
+# Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
+# Copyright (c) 2014-2022 Spike Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Spike source code.
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Spike Engine class reference\n"
+"Report-Msgid-Bugs-To: http://gitlab-ce.oasis.world/engine/spike\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorExportDefination.xml
+msgid "Export resources filter by platform."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorExportSettings.xml
+msgid "Base class of codeless export settings."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "System for package management."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "Get the status of the package."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "The singleton of this System."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "Check whether the plugin in the package is enabled."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "Enable or Disable the plugin in the package."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "When the package is loaded, it will be triggered regardless of success or failure."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "Triggered when package removal fails."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "Triggered when the package starts to load."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "Triggered when all packages are loaded."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "The package is not configured."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "The package is configured, but has not yet been loaded."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "The configured package has been successfully loaded."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "Error occurred during package loading."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/EditorPackageSystem.xml
+msgid "The package is mark removed."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/spike/doc_classes/EditorUtils.xml
+msgid "Collection of editor utilities."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/spike/doc_classes/EditorUtils.xml
+msgid "Add a menu item that can be checked."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/spike/doc_classes/EditorUtils.xml
+msgid "Add a menu item."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/spike/doc_classes/EditorUtils.xml
+msgid "Add a radio menu item."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/spike/doc_classes/EditorUtils.xml
+msgid "Open a panel to execute the command line and display the execution log."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/spike/doc_classes/EditorUtils.xml
+msgid "Remove a menu item."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pluginsystem/doc_classes/NativeWrapper.xml
+msgid "Native library interface wrapper."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pck_runner/doc_classes/PCKSceneTree.xml
+msgid "A mainloop type to override [code]SceneTree.quit()[/code] for pck runner."
+msgstr ""
+
+#: F:/Projects/Spike/engine/modules/pck_runner/doc_classes/PCKSceneTree.xml
+msgid "Pck file of another game can be launch by [PCKRunner]. When the game call [code]SceneTree.quit()[/code], the application will not stop but return to previus scene."
+msgstr ""
+

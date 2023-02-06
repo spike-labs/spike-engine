@@ -1,0 +1,10 @@
+
+String __tostring();
+NodePath get_as_property_path();
+StringName get_concatenated_subnames();
+StringName get_name(int);
+int get_name_count();
+StringName get_subname(int);
+int get_subname_count();
+bool is_absolute();
+bool is_empty();

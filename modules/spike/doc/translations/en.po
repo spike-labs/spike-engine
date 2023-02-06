@@ -1,0 +1,26 @@
+# LANGUAGE translation of the Spike Engine class reference.
+# Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
+# Copyright (c) 2014-2022 Spike Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Spike source code.
+#
+# hongfeng.wu <hongfeng.wu0813@gmail.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: Spike Engine class reference\n"
+"Report-Msgid-Bugs-To: http://gitlab-ce.oasis.world/engine/spike\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: h:/Spike/SpikeSrc/engine/modules/pluginsystem/doc_classes/EditorExportDefination.xml
+msgid "Export resources filter by platform."
+msgstr ""
+
+#: h:/Spike/SpikeSrc/engine/modules/pluginsystem/doc_classes/EditorExportSettings.xml
+msgid "Base class of codeless export settings."
+msgstr ""
+
+#: h:/Spike/SpikeSrc/engine/modules/pluginsystem/doc_classes/NativeWrapper.xml
+msgid "Native library interface wrapper."
+msgstr ""

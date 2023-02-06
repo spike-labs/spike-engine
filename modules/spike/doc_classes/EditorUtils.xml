@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="EditorUtils" inherits="Object" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+		Collection of editor utilities.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_menu_check_item" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="menu_path" type="String" />
+			<param index="1" name="callable" type="Callable" />
+			<param index="2" name="checked" type="bool" default="false" />
+			<param index="3" name="icon" type="Texture2D" default="null" />
+			<description>
+				Add a menu item that can be checked, for editor only. Do not support right click menu.
+				[param callable] for other menu item require 1 argument:
+				[codeblock]
+				func check_menu(checked: bool):
+				    if checked:
+				        pass
+				[/codeblock]
+				Refer to [method add_menu_item].
+			</description>
+		</method>
+		<method name="add_menu_item" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="menu_path" type="String" />
+			<param index="1" name="callable" type="Callable" />
+			<param index="2" name="icon" type="Texture2D" default="null" />
+			<description>
+				Add a menu item for editor.
+				[codeblock]
+				func _ready():
+				    # Add a menu item `custom` to Scene menu of main menu bar.
+				    EditorUtils.add_menu_item("Scene/custom", _custom_menu)
+
+				    # Add a menu item `custom` to Project menu of main menu bar.
+				    EditorUtils.add_menu_item("Project/custom", _custom_menu)
+
+				    # Add a menu item `custom` to Debug menu of main menu bar.
+				    EditorUtils.add_menu_item("Debug/custom", _custom_menu)
+
+				    # Add a menu item `custom` to Editor menu of main menu bar.
+				    EditorUtils.add_menu_item("Editor/custom", _custom_menu)
+
+				    # Add a menu item `custom` to Help menu of main menu bar.
+				    EditorUtils.add_menu_item("Help/custom", _custom_menu)
+
+				    # Add a menu `Custom` to main menu bar, then add a menu item `Test` to it.
+				    EditorUtils.add_menu_item("Custom/Test", _custom_menu)
+
+				    # Add a menu item `custom` to Right click menu of File System Dock.
+				    EditorUtils.add_menu_item("FileSystem/custom", right_click_menu)
+
+				func _custom_menu():
+				    pass
+
+				func right_click_menu(validate: bool, paths: PackedStringArray):
+				    if validate:
+				        # In validate call, returns true to create this item or it will be ignore on menu popup.
+				        return true
+				[/codeblock]
+				[param icon] is the menu icon.
+			</description>
+		</method>
+		<method name="add_menu_radio_check_item" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="menu_path" type="String" />
+			<param index="1" name="callable" type="Callable" />
+			<param index="2" name="checked" type="bool" default="false" />
+			<param index="3" name="icon" type="Texture2D" default="null" />
+			<description>
+				Add a radio menu item, for editor only. Do not support right click menu.
+				Arguments usage refer to [method add_menu_check_item].
+			</description>
+		</method>
+		<method name="execute_and_show_output" qualifiers="static">
+			<return type="int" />
+			<param index="0" name="title" type="String" />
+			<param index="1" name="path" type="String" />
+			<param index="2" name="arguments" type="Array" />
+			<param index="3" name="close_on_ok" type="bool" default="false" />
+			<param index="4" name="close_on_errors" type="bool" default="false" />
+			<description>
+				Open a panel to execute the command line and display the execution log.
+			</description>
+		</method>
+		<method name="remove_menu_item" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="menu_path" type="String" />
+			<description>
+				Remove a menu item.
+			</description>
+		</method>
+	</methods>
+</class>

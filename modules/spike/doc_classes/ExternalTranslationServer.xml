@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ExternalTranslationServer" inherits="TranslationServer" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="load_external_dir" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="dir" type="String" />
+			<param index="1" name="notify_change" type="bool" default="true" />
+			<description>
+			</description>
+		</method>
+		<method name="load_external_file" qualifiers="static">
+			<return type="int" enum="Error" />
+			<param index="0" name="file" type="FileAccess" />
+			<param index="1" name="notify_change" type="bool" default="true" />
+			<description>
+			</description>
+		</method>
+		<method name="load_external_stream" qualifiers="static">
+			<return type="int" enum="Error" />
+			<param index="0" name="stream" type="PackedByteArray" />
+			<param index="1" name="scheme" type="int" enum="ExternalTranslationServer.Scheme" />
+			<param index="2" name="notify_change" type="bool" default="true" />
+			<description>
+			</description>
+		</method>
+		<method name="unload_external_dir" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="dir" type="String" />
+			<param index="1" name="notify_change" type="bool" default="true" />
+			<description>
+			</description>
+		</method>
+		<method name="unload_external_file" qualifiers="static">
+			<return type="int" enum="Error" />
+			<param index="0" name="file" type="FileAccess" />
+			<param index="1" name="notify_change" type="bool" default="true" />
+			<description>
+			</description>
+		</method>
+		<method name="unload_external_stream" qualifiers="static">
+			<return type="int" enum="Error" />
+			<param index="0" name="file" type="PackedByteArray" />
+			<param index="1" name="notify_change" type="bool" default="true" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<constants>
+		<constant name="CSV" value="0" enum="Scheme">
+		</constant>
+		<constant name="GETTEXT" value="1" enum="Scheme">
+		</constant>
+	</constants>
+</class>

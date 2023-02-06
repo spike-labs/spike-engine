@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import os
+
+from platform_methods import run_in_subprocess
+import lua_codes_builders
+
+Import('env')
+
+lua_sources = Glob("*.lua")
+make_lua_codes_builder = Builder(
+    action=run_in_subprocess(lua_codes_builders.make_lua_codes_action), suffix=".h", src_suffix=".lua"
+)
+env["BUILDERS"]["MakeLuaCodeBuilder"] = make_lua_codes_builder
+env.Alias("lua_codes", [env.MakeLuaCodeBuilder("#modules/lua_codes.gen.h", lua_sources)])
+
+cpp_sources = Glob("*.txt")
+make_wrap_codes_builder = Builder(
+    action=run_in_subprocess(lua_codes_builders.make_wrap_codes_action), suffix=".h", src_suffix=".txt"
+)
+env["BUILDERS"]["MakeWrapCodeBuilder"] = make_wrap_codes_builder
+env.Alias("wrap_codes", [env.MakeWrapCodeBuilder("#modules/godot_wrap_for_lua.gen.h", cpp_sources)])

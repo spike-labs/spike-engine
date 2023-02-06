@@ -1,0 +1,146 @@
+
+# LANGUAGE translation of the Spike Engine editor.
+# Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
+# Copyright (c) 2014-2022 Spike Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Spike source code.
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Spike Engine editor\n"
+"Report-Msgid-Bugs-To: http://gitlab-ce.oasis.world/engine/spike\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: ../luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "Text Editor"
+msgstr ""
+
+#: ../luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "Indent"
+msgstr ""
+
+#: ../luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "Type"
+msgstr ""
+
+#: ../luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "Size"
+msgstr ""
+
+#: ../pluginsystem/editor/editor_export_defination.cpp
+msgctxt "Spike"
+msgid "Exclude"
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_source.cpp
+msgctxt "Spike"
+msgid "An error(#%d) occurred while loading the package locally."
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_source_git.cpp
+msgctxt "Spike"
+msgid "An error(#%d) occurred while loading package from git repositoy."
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_source_registry.cpp
+msgctxt "Spike"
+msgid "An error occurred while downloading package archive.\n%s"
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_source_registry.cpp
+msgctxt "Spike"
+msgid "An error(#%d) occurred while unzip package archive."
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_source_registry.cpp
+msgctxt "Spike"
+msgid "Uncompressing"
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_source_registry.cpp
+msgctxt "Spike"
+msgid "Downloading"
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_system.cpp
+msgctxt "Spike"
+msgid "Update Plugins"
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_system.cpp
+msgctxt "Spike"
+msgid "The plugin '%s' is in use, please restart the editor for complete unloading."
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_system.cpp
+msgctxt "Spike"
+msgid "The plugin '%s' is in use, please restart the editor for loading another version."
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_system.h
+msgctxt "Spike"
+msgid "Active plugin: "
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_system.h
+msgctxt "Spike"
+msgid "success"
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_system.h
+msgctxt "Spike"
+msgid "fail"
+msgstr ""
+
+#: ../pluginsystem/editor/editor_package_system.h
+msgctxt "Spike"
+msgid "Deactive plugin: "
+msgstr ""
+
+#: ../pluginsystem/native_wrapper.cpp
+msgctxt "Spike"
+msgid "Symbol Prefix"
+msgstr ""
+
+#: ../pluginsystem/native_wrapper.cpp
+msgctxt "Spike"
+msgid "Libraries"
+msgstr ""
+
+#: ../pluginsystem/native_wrapper.cpp
+msgctxt "Spike"
+msgid "Dependencies"
+msgstr ""
+
+#: editor/import/spike_resource_importer_texture_atlas.cpp
+msgctxt "Spike"
+msgid "There are multiple importers for different types pointing to file %s, import aborted"
+msgstr ""
+
+#: editor/spike_editor_node.cpp
+msgctxt "Spike"
+msgid "Spike package System"
+msgstr ""
+
+#: editor/spike_filesystem_dock.cpp
+msgctxt "Spike"
+msgid "PACKAGES"
+msgstr ""
+
+#: editor/spike_translation_override.h
+msgctxt "Override"
+msgid "Shader Editor"
+msgstr ""
+
+#: editor/spike_translation_override.h
+msgctxt "Override"
+msgid "About Godot"
+msgstr ""

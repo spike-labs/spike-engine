@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="PCKRunner" inherits="Object" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+		Runtime Game Management.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_singleton" qualifiers="static">
+			<return type="PCKRunner" />
+			<description>
+			</description>
+		</method>
+		<method name="get_threaded_load_progress" qualifiers="static">
+			<return type="float" />
+			<param index="0" name="pck_file" type="String" default="&quot;&quot;" />
+			<description>
+			</description>
+		</method>
+		<method name="is_loading" qualifiers="static">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="run_pck" qualifiers="static">
+			<return type="int" enum="Error" />
+			<param index="0" name="pck_file" type="String" />
+			<param index="1" name="threaded_load" type="bool" default="false" />
+			<description>
+				Load another game's PCK file, and load its startup scene([code]application/run/main_scene[/code]).
+			</description>
+		</method>
+		<method name="stop_pck" qualifiers="static">
+			<return type="int" enum="Error" />
+			<param index="0" name="_unnamed_arg0" type="int" default="0" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<signals>
+		<signal name="pck_started">
+			<description>
+			</description>
+		</signal>
+		<signal name="pck_stopped">
+			<description>
+			</description>
+		</signal>
+	</signals>
+</class>

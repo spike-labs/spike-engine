@@ -1,0 +1,23 @@
+/**
+ * version.h
+ *
+ * This file is part of Spike engine, a modification and extension of Godot.
+ *
+ */
+#pragma once
+
+#include "core/version.h"
+
+#define SPIKE_BRANCH "" _MKSTR(VERSION_SPIKE_MAJOR) "." _MKSTR(VERSION_SPIKE_MINOR)
+
+#if VERSION_SPIKE_PATCH
+#define SPIKE_NUMBER "" SPIKE_BRANCH "." _MKSTR(VERSION_PATCH)
+#else
+#define SPIKE_NUMBER "" SPIKE_BRANCH
+#endif
+
+#define SPIKE_FULL_CONFIG "" SPIKE_NUMBER "." VERSION_SPIKE_STATUS VERSION_MODULE_CONFIG
+#define SPIKE_FULL_BUILD "" SPIKE_FULL_CONFIG "." VERSION_BUILD
+#define SPIKE_FULL_NAME "" VERSION_NAME " v" SPIKE_FULL_BUILD
+
+#define VERSION_SPIKE_HEX 0x10000 * VERSION_SPIKE_MAJOR + 0x100 * VERSION_SPIKE_MINOR + VERSION_SPIKE_PATCH

@@ -1,0 +1,4 @@
+[submodule "godot"]
+	path = godot
+	url = https://github.com/spike-labs/godot.git
+	branch = spike/0.1-alpha
