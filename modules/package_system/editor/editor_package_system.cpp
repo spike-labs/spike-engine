@@ -67,14 +67,13 @@ bool EditorPackageSystem::_get_current_task_step(String &state, int &step) {
 void EditorPackageSystem::_fetch_source_progress() {
 	String task_name = TASK_NAME;
 	ProgressDialog::get_singleton()->add_task(task_name, STTR("Update Plugins"), 100);
-	while (!_thread_done.is_set()) {
+	while (_thread_working.is_set()) {
 		String state;
 		int step;
 		if (_get_current_task_step(state, step)) {
 			ProgressDialog::get_singleton()->task_step(task_name, state, step / 100.0 * 100);
 		}
 	}
-	_fetch_thread.wait_to_finish();
 	ProgressDialog::get_singleton()->end_task(task_name);
 
 	if (_cfg_dirty) {
@@ -84,8 +83,7 @@ void EditorPackageSystem::_fetch_source_progress() {
 		int fpos = -1;
 		auto fs = EditorFileSystem::get_singleton()->find_file(path_manifest, &fpos);
 		if (fs) {
-			// Mansualy change modified time of package folder, so the file system will rescan that folder.
-			fs->modified_time -= 1;
+			fs->force_update();
 			_active_step = EditorFileSystem::get_singleton()->is_scanning() ? 2 : 1;
 			_deactive_expire_plugins();
 
@@ -113,9 +111,12 @@ bool EditorPackageSystem::_update_config() {
 
 	if (_config.is_valid()) {
 		for (auto &info : package_info_map) {
-			if (info.value.status == PACKAGE_ERROR && cfg->has_section_key(SECTION_PLUGINS, info.key) && cfg->get_value(SECTION_PLUGINS, info.key) != _config->get_value(SECTION_PLUGINS, info.key)) {
-				// Package source has changed, reset it's status.
-				package_info_map[info.key].status = PACKAGE_EXISTS;
+			if (info.value.status == PACKAGE_ERROR) {
+				String cached_pkg_source = _config->has_section_key(SECTION_PLUGINS, info.key) ? _config->get_value(SECTION_PLUGINS, info.key) : String();
+				if (cfg->has_section_key(SECTION_PLUGINS, info.key) && cfg->get_value(SECTION_PLUGINS, info.key) != cached_pkg_source) {
+					// Package source has changed, reset it's status.
+					package_info_map[info.key].status = PACKAGE_EXISTS;
+				}
 			}
 		}
 	}
@@ -126,7 +127,7 @@ bool EditorPackageSystem::_update_config() {
 }
 
 void EditorPackageSystem::update_packages(const String &p_reset) {
-	if (_fetch_thread.is_started()) {
+	if (_thread_working.is_set()) {
 		return;
 	}
 
@@ -151,9 +152,13 @@ void EditorPackageSystem::update_packages(const String &p_reset) {
 
 	set_process(true);
 	_fetch_step = 1;
-
-	_thread_done.clear();
-	_fetch_thread.start(&EditorPackageSystem::_source_handler, this);
+	_thread_working.set();
+	_cfg_dirty = false;
+#ifdef WEB_ENABLED
+	_source_handler();
+#else
+	WorkerThreadPool::get_singleton()->add_task(callable_mp(this, &EditorPackageSystem::_source_handler));
+#endif
 }
 
 void EditorPackageSystem::_deactive_expire_plugins() {
@@ -203,7 +208,7 @@ void EditorPackageSystem::_active_plugins(int n) {
 	}
 }
 
-Error EditorPackageSystem::_handle_packages_source(const Map<String, String> &p_packages) {
+Error EditorPackageSystem::_handle_packages_source() {
 	Set<String> remove_list;
 	for (auto kv : package_info_map) {
 		remove_list.insert(kv.key);
@@ -223,6 +228,7 @@ Error EditorPackageSystem::_handle_packages_source(const Map<String, String> &p_
 
 	auto da = DirAccess::create(DirAccess::ACCESS_FILESYSTEM);
 	auto packages_dir = ProjectSettings::get_singleton()->globalize_path(ProjectSettings::get_singleton()->get_resource_path()).path_join(NAME_PLUGINS);
+	Map<String, String> p_packages = Map<String, String>(_packages_map);
 	for (auto kv : p_packages) {
 		String package_name = kv.key;
 		String package_source = kv.value;
@@ -304,7 +310,6 @@ Error EditorPackageSystem::_handle_packages_source(const Map<String, String> &p_
 			call_deferred("emit_signal", PLUGIN_HAS_LOADED, package_name, String());
 		}
 	}
-
 	PackedStringArray remove_arr;
 	da->change_dir(packages_dir);
 	for (auto key : remove_list) {
@@ -370,7 +375,7 @@ void EditorPackageSystem::_update_autoload_from_disk(const String &path_info) {
 		String name = "autoload/" + e;
 		ProjectSettings::get_singleton()->clear(name);
 		ProjectSettings::get_singleton()->save();
-		EditorNode::get_singleton()->get_log()->add_message(TTR("Remove AutoLoad") + " " + e, EditorLog::MSG_TYPE_EDITOR);
+		ED_MSG(TTR("Remove AutoLoad") + " %s", e);
 	}
 }
 
@@ -463,6 +468,11 @@ void EditorPackageSystem::_bind_methods() {
 	BIND_ENUM_CONSTANT(PACKAGE_REMOVED);
 }
 
+void EditorPackageSystem::_source_handler() {
+	_handle_packages_source();
+	_thread_working.clear();
+}
+
 uint64_t EditorPackageSystem::get_modified_time(const String &dir_path) {
 	auto da = DirAccess::open(dir_path);
 	if (da.is_valid()) {
@@ -482,15 +492,6 @@ uint64_t EditorPackageSystem::get_modified_time(const String &dir_path) {
 	} else {
 		return FileAccess::get_modified_time(dir_path);
 	}
-}
-
-void EditorPackageSystem::_source_handler(void *p_user) {
-	auto eps = static_cast<EditorPackageSystem *>(p_user);
-
-	auto packages = eps->_packages_map;
-	eps->_cfg_dirty = false;
-	eps->_handle_packages_source(packages);
-	eps->_thread_done.set();
 }
 
 void EditorPackageSystem::_set_package_plugin_enabled(const String &p_name_path, bool p_enabled) {
@@ -606,4 +607,40 @@ void EditorPackageSystem::set_package_plugin_enabled(const String &p_name_path, 
 		_config->set_value(DISACTIVE_SECTION, package_name, p_enabled ? Variant() : Variant(true));
 		_config->save(PATH_MANIFEST);
 	}
+}
+
+void EditorPackageSystem::install_package(const String &p_package, const Variant &p_value) {
+	Ref<ConfigFile> manifest;
+	REF_INSTANTIATE(manifest);
+	manifest->load(PATH_MANIFEST);
+	if (manifest.is_valid()) {
+		manifest->set_value(SECTION_PLUGINS, p_package, p_value);
+		manifest->save(PATH_MANIFEST);
+		EditorFileSystem::get_singleton()->call_deferred("scan_sources");
+	}
+}
+
+void EditorPackageSystem::uninstall_package(const String &p_package) {
+	install_package(p_package, Variant());
+}
+
+String EditorPackageSystem::get_package_source(const String &p_package) {
+	Ref<ConfigFile> manifest;
+	REF_INSTANTIATE(manifest);
+	manifest->load(PATH_MANIFEST);
+	if (manifest.is_valid()) {
+		if (manifest->has_section_key(SECTION_PLUGINS, p_package)) {
+			return manifest->get_value(SECTION_PLUGINS, p_package);
+		}
+	}
+	return String();
+}
+
+String EditorPackageSystem::get_package_version(const String &p_package) {
+	Ref<ConfigFile> conf;
+	REF_INSTANTIATE(conf);
+	if (conf->load(NAME_TO_PLUGIN_PATH(p_package)) == OK && conf->has_section_key("plugin", "version")) {
+		return conf->get_value("plugin", "version");
+	}
+	return String();
 }

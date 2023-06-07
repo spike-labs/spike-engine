@@ -16,6 +16,7 @@
 #include "editor/editor_undo_redo_manager.h"
 #include "editor/history_dock.h"
 #include "editor/inspector_dock.h"
+#include "spike/editor/editor_log_node.h"
 #include "import/spike_resource_importer_texture_atlas.h"
 #include "inspector/material_editor_inspector.h"
 #include "scene/gui/menu_bar.h"
@@ -122,10 +123,11 @@ SpikeEditorNode::SpikeEditorNode() {
 
 	// Reuse Warning Dialog
 	{
-		warning->disconnect("custom_action", callable_mp((EditorNode *)this, &SpikeEditorNode::_copy_warning));
-		warning->connect("custom_action", callable_mp(this, &SpikeEditorNode::_warning_action));
-		warning->connect("close_requested", callable_mp(this, &SpikeEditorNode::_warning_closed));
-		_custom_warning_btn = warning->add_button("", true, "custom");
+		AcceptDialog* warning_dlg = reinterpret_cast<AcceptDialog *>(warning);
+		warning_dlg->disconnect("custom_action", callable_mp((EditorNode *)this, &SpikeEditorNode::_copy_warning));
+		warning_dlg->connect("custom_action", callable_mp(this, &SpikeEditorNode::_warning_action));
+		warning_dlg->connect("close_requested", callable_mp(this, &SpikeEditorNode::_warning_closed));
+		_custom_warning_btn = warning_dlg->add_button("", true, "custom");
 		_custom_warning_btn->set_visible(false);
 	}
 
@@ -206,7 +208,7 @@ void SpikeEditorNode::_warning_action(const String &p_str) {
 			Callable::CallError ce;
 			_custom_warning_callable.callp(nullptr, 0, ret, ce);
 		}
-		warning->hide();
+		reinterpret_cast<AcceptDialog *>(warning)->hide();
 	}
 }
 

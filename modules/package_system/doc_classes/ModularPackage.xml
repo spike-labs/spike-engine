@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ModularPackage" inherits="ModularData" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<members>
+		<member name="ext" type="int" setter="set_ext" getter="get_ext" default="0">
+		</member>
+		<member name="package" type="String" setter="set_id" getter="get_id" default="&quot;&quot;">
+		</member>
+		<member name="version" type="String" setter="set_ver" getter="get_ver" default="&quot;&quot;">
+		</member>
+	</members>
+</class>

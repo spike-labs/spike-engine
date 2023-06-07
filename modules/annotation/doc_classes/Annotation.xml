@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Annotation" inherits="Resource" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="annotations_to_json" qualifiers="static">
+			<return type="String" />
+			<param index="0" name="annotations" type="BaseResourceAnnotation[]" />
+			<description>
+			</description>
+		</method>
+		<method name="get_display_name" qualifiers="const">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_member_annotations" qualifiers="const">
+			<return type="Annotation[]" />
+			<description>
+			</description>
+		</method>
+		<method name="json_to_annotations" qualifiers="static">
+			<return type="Dictionary" />
+			<param index="0" name="annotations_json" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="try_get_annotation" qualifiers="static">
+			<return type="BaseResourceAnnotation" />
+			<param index="0" name="resource" type="Resource" />
+			<description>
+			</description>
+		</method>
+		<method name="try_get_annotation_by_path" qualifiers="static">
+			<return type="BaseResourceAnnotation" />
+			<param index="0" name="resource_path" type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="comment" type="String" setter="set_comment" getter="get_comment" default="&quot;&quot;">
+		</member>
+	</members>
+</class>

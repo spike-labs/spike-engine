@@ -7,9 +7,9 @@
 #ifndef SPIKE_RESOURCE_IMPORTER_TEXTURE_ATLAS_H
 #define SPIKE_RESOURCE_IMPORTER_TEXTURE_ATLAS_H
 
-#include <godot/editor/import/resource_importer_texture_atlas.h>
 #include "core/io/resource_importer.h"
 #include "editor/editor_file_system.h"
+#include <editor/import/resource_importer_texture_atlas.h>
 
 class SpikeResourceImporterTextureAtlas : public ResourceImporterTextureAtlas {
 	GDCLASS(SpikeResourceImporterTextureAtlas, ResourceImporterTextureAtlas);
@@ -28,7 +28,7 @@ public:
 
 	SpikeResourceImporterTextureAtlas();
 
-#pragma region 实现散图变化跟踪与图集再生成
+#pragma region Implementing Scatter Map Change Tracking and Atlas Regeneration
 private:
 	void _connect_signal();
 	void _get_resource_owners(const String &p_resource_path, EditorFileSystemDirectory *efsd, List<String> &r_owners);

@@ -1,0 +1,40 @@
+﻿#!/usr/bin/env python
+
+Import("env")
+Import('env_modules')
+
+if env.editor_build:
+    import editor_builders
+
+env_translation = env_modules.Clone()
+
+env_translation.add_source_files(env.modules_sources,'*.cpp')
+
+if env.editor_build:
+    env_translation.add_source_files(env.modules_sources,'editor/*.cpp')
+
+    # Editor translations
+    to_include = (
+        # "ar,bg,ca,cs,de,el,eo,es_AR,es,fi,fr,gl,he,hu,id,it,ja,ko,lv,ms,nb,nl,pl,pt_BR,pt,ro,ru,sk,sv,th,tr,uk,vi,zh_CN,zh_TW"
+        "en,zh_CN"
+    ).split(",")
+    tlist = [env.Dir("editor/translations").abspath + "/" + f + ".po" for f in to_include]
+    env.Depends("#editor/spike_editor_translations.gen.h", tlist)
+    env.CommandNoCache(
+        "#editor/spike_editor_translations.gen.h",
+        tlist,
+        env.Run(editor_builders.make_editor_translations_header, "Generating spike editor translations header."),
+    )
+
+    # Documentation translations
+    to_include = (
+        #"de,es,fr,ja,zh_CN"
+        "en,zh_CN"
+    ).split(",")
+    tlist = [env.Dir("doc/translations").abspath + "/" + f + ".po" for f in to_include]
+    env.Depends("#editor/spike_doc_translations.gen.h", tlist)
+    env.CommandNoCache(
+        "#editor/spike_doc_translations.gen.h",
+        tlist,
+        env.Run(editor_builders.make_doc_translations_header, "Generating translations header."),
+    )

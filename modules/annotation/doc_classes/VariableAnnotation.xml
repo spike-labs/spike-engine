@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="VariableAnnotation" inherits="MemberAnnotation" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<members>
+		<member name="class_name" type="String" setter="set_class_name" getter="get_class_name" default="&quot;&quot;">
+		</member>
+		<member name="type" type="int" setter="set_type" getter="get_type" enum="Variant.Type" default="0">
+		</member>
+	</members>
+</class>

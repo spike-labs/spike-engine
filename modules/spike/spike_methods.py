@@ -71,7 +71,7 @@ def generate_spike_version_header(module_version_string=""):
 
     # NOTE: It is safe to generate these files here, since this is still executed serially.
 
-    f = open("../../godot/core/version_generated.gen.h", "w")
+    f = open("../../engine/core/version_generated.gen.h", "w")
     f.write(
         """/* THIS FILE IS GENERATED DO NOT EDIT */
 #ifndef VERSION_GENERATED_GEN_H
@@ -104,7 +104,7 @@ extern const char *const VERSION_SPIKE_HASH;
     )
     f.close()
 
-    fhash = open("../../godot/core/version_hash.gen.cpp", "w")
+    fhash = open("../../engine/core/version_hash.gen.cpp", "w")
     fhash.write(
         """/* THIS FILE IS GENERATED DO NOT EDIT */
 #include "core/version.h"

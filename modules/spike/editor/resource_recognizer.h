@@ -1,3 +1,9 @@
+/**
+ * resource_recognizer.h
+ *
+ * This file is part of Spike engine, a modification and extension of Godot.
+ *
+ */
 #pragma once
 
 #include "core/object/ref_counted.h"

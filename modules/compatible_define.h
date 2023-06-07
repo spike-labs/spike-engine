@@ -102,7 +102,7 @@
 //(this), &klass::callable
 #define callable_mp_n(this, klass, callable) Callable(memnew(CallableCustomMethodPointer(this, &klass::callable)))
 #define callable_mp_b(this, klass, callable, binds) Callable(memnew(CallableCustomBind(callable_mp_n(this, klass, callable), binds)))
-#define GET_UNDO_REDO(ed) EditorNode::get_undo_redo()
+#define GET_UNDO_REDO(ed) EditorUndoRedoManager::get_singleton()
 #define GET_EDITOR_NODE(ed) EditorNode::get_singleton()
 #define EDITOR_DATA_DIR() EditorPaths::get_singleton()->get_data_dir()
 #define FILE_REF_IS_NULL(f) f.is_null()

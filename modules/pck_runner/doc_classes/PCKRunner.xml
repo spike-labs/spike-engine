@@ -25,7 +25,7 @@
 			</description>
 		</method>
 		<method name="run_pck" qualifiers="static">
-			<return type="int" enum="Error" />
+			<return type="void" />
 			<param index="0" name="pck_file" type="String" />
 			<param index="1" name="threaded_load" type="bool" default="false" />
 			<description>
@@ -33,18 +33,26 @@
 			</description>
 		</method>
 		<method name="stop_pck" qualifiers="static">
-			<return type="int" enum="Error" />
+			<return type="void" />
 			<param index="0" name="_unnamed_arg0" type="int" default="0" />
 			<description>
 			</description>
 		</method>
 	</methods>
 	<signals>
+		<signal name="pck_run_failed">
+			<param index="0" name="pck_file" type="String" />
+			<param index="1" name="error" type="int" />
+			<description>
+			</description>
+		</signal>
 		<signal name="pck_started">
+			<param index="0" name="pck_file" type="String" />
 			<description>
 			</description>
 		</signal>
 		<signal name="pck_stopped">
+			<param index="0" name="pck_file" type="String" />
 			<description>
 			</description>
 		</signal>

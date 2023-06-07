@@ -174,6 +174,10 @@ protected:
 
 	void _install_selected_package();
 
+	// Package Context Menu
+	void _extend_package_context_menu();
+	bool _package_reload_action(bool p_validate, const PackedStringArray p_paths);
+
 public:
 	EditorPackageLibrary();
 	~EditorPackageLibrary();

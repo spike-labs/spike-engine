@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ModularImporter" inherits="Node" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_popup_import_dialog" qualifiers="virtual">
+			<return type="void" />
+			<param index="0" name="" type="Object" />
+			<description>
+			</description>
+		</method>
+		<method name="set_imported_modular_graph">
+			<return type="void" />
+			<param index="0" name="modular_graph" type="ModularGraph" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

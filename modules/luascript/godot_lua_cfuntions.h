@@ -1,3 +1,7 @@
+/**
+ * This file is part of Lua binding for Godot Engine.
+ *
+ */
 #pragma once
 
 #include "lib/lua/lua.hpp"

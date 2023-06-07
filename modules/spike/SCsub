@@ -14,45 +14,15 @@ env["BUILDERS"]["MakeSpikeLicenseHeader"] =  Builder(
 )
 env.Alias("spike_license", [env.MakeSpikeLicenseHeader("#modules/spike_license.gen.h", Glob("../*/*.lic"))])
 
-if env.editor_build:
-    import editor_builders
-
 env_spike = env_modules.Clone()
 
 env_spike.add_source_files(env.modules_sources, "*.cpp")
 env_spike.add_source_files(env.modules_sources, "servers/*.cpp")
 env_spike.add_source_files(env.modules_sources, "string/*.cpp")
-env_spike.add_source_files(env.modules_sources, "configuration/*.cpp")
 
 if env.editor_build:
     env_spike.add_source_files(env.modules_sources, "editor/*.cpp")
     env_spike.add_source_files(env.modules_sources, "editor/*/*.cpp")
-
-    # Editor translations
-    to_include = (
-        # "ar,bg,ca,cs,de,el,eo,es_AR,es,fi,fr,gl,he,hu,id,it,ja,ko,lv,ms,nb,nl,pl,pt_BR,pt,ro,ru,sk,sv,th,tr,uk,vi,zh_CN,zh_TW"
-        "en"
-    ).split(",")
-    tlist = [env.Dir("editor/translations").abspath + "/" + f + ".po" for f in to_include]
-    env.Depends("#editor/spike_editor_translations.gen.h", tlist)
-    env.CommandNoCache(
-        "#editor/spike_editor_translations.gen.h",
-        tlist,
-        env.Run(editor_builders.make_editor_translations_header, "Generating spike editor translations header."),
-    )
-
-    # Documentation translations
-    to_include = (
-        #"de,es,fr,ja,zh_CN"
-        "en"
-    ).split(",")
-    tlist = [env.Dir("doc/translations").abspath + "/" + f + ".po" for f in to_include]
-    env.Depends("#editor/spike_doc_translations.gen.h", tlist)
-    env.CommandNoCache(
-        "#editor/spike_doc_translations.gen.h",
-        tlist,
-        env.Run(editor_builders.make_doc_translations_header, "Generating translations header."),
-    )
 
 print("Generating spike version header...")
 spike_methods.generate_spike_version_header(env.module_version_string)

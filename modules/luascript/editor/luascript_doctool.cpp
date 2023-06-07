@@ -1,9 +1,7 @@
-
 /**
  * This file is part of Lua binding for Godot Engine.
- * 接口文档生成。
+ *
  */
-
 #include "luascript/luascript_language.h"
 #ifdef GODOT_3_X
 #include "core/os/dir_access.h"

@@ -390,6 +390,7 @@ public:
 	virtual void mesh_instance_set_skeleton(RID p_mesh_instance, RID p_skeleton) override;
 	virtual void mesh_instance_set_blend_shape_weight(RID p_mesh_instance, int p_shape, float p_weight) override;
 	virtual void mesh_instance_check_for_update(RID p_mesh_instance) override;
+	virtual void mesh_instance_set_canvas_item_transform(RID p_mesh_instance, const Transform2D &p_transform) override;
 	virtual void update_mesh_instances() override;
 
 	_FORCE_INLINE_ void mesh_instance_surface_get_vertex_arrays_and_format(RID p_mesh_instance, uint32_t p_surface_index, uint32_t p_input_mask, GLuint &r_vertex_array_gl) {

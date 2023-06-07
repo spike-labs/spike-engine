@@ -1,4 +1,4 @@
-﻿/**
+/**
  * This file is part of Lua binding for Godot Engine.
  *
  */
@@ -233,7 +233,6 @@ public:
 	virtual void init() override;
 	virtual String get_type() const override;
 	virtual String get_extension() const override;
-	virtual Error execute_file(const String &p_path) override;
 	virtual void finish() override;
 
 	virtual void get_reserved_words(List<String> *p_words) const override;
@@ -308,11 +307,6 @@ public:
 
 	virtual int profiling_get_accumulated_data(ProfilingInfo *p_info_arr, int p_info_max) override;
 	virtual int profiling_get_frame_data(ProfilingInfo *p_info_arr, int p_info_max) override;
-
-	virtual void *alloc_instance_binding_data(Object *p_object) override;
-	virtual void free_instance_binding_data(void *p_data) override;
-	virtual void refcount_incremented_instance_binding(Object *p_object) override;
-	virtual bool refcount_decremented_instance_binding(Object *p_object) override;
 
 	virtual void frame() override;
 

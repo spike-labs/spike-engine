@@ -13,6 +13,7 @@
 #include "editor_package_system.h"
 #include "scene/gui/menu_button.h"
 #include "scene/gui/split_container.h"
+#include "spike/editor/spike_editor_utils.h"
 
 #define TREE_PANEL_STYLE EditorNode::get_singleton()->get_gui_base()->get_theme_stylebox("panel", "Tree")
 #define BACKGROUND_STYLE EditorNode::get_singleton()->get_gui_base()->get_theme_stylebox("Background", "EditorStyles")
@@ -39,34 +40,11 @@ static inline void setup_http_request(HTTPRequest *request) {
 	request->set_https_proxy(proxy_host, proxy_port);
 }
 
-static inline void update_pakcage_manifest(const String &p_package, const Variant &p_value) {
-	Ref<ConfigFile> manifest;
-	REF_INSTANTIATE(manifest);
-	manifest->load(PATH_MANIFEST);
-	if (manifest.is_valid()) {
-		manifest->set_value(SECTION_PLUGINS, p_package, p_value);
-		manifest->save(PATH_MANIFEST);
-		EditorFileSystem::get_singleton()->call_deferred("scan_sources");
-	}
-}
-
-static inline String get_package_install_source(const String &p_package) {
-	Ref<ConfigFile> manifest;
-	REF_INSTANTIATE(manifest);
-	manifest->load(PATH_MANIFEST);
-	if (manifest.is_valid()) {
-		if (manifest->has_section_key(SECTION_PLUGINS, p_package)) {
-			return manifest->get_value(SECTION_PLUGINS, p_package);
-		}
-	}
-	return String();
-}
-
 void EditorPackageLibrary::_notification(int p_what) {
 	switch (p_what) {
 		case NOTIFICATION_READY: {
 			add_theme_style_override("panel", get_theme_stylebox(SNAME("bg"), SNAME("AssetLib")));
-
+			_extend_package_context_menu();
 		} break;
 		case NOTIFICATION_VISIBILITY_CHANGED: {
 			if (is_visible_in_tree()) {
@@ -87,7 +65,7 @@ void EditorPackageLibrary::_notification(int p_what) {
 void EditorPackageLibrary::_menu_option_pressed(int p_id) {
 	switch (p_id) {
 		case MenuOption::IMPORT_FROM_GIT:
-			git_dialog->popup_centered(Size2i(800 * EDSCALE, 0));
+			git_dialog->popup_centered(Size2i(600 * EDSCALE, 0));
 			break;
 		case MenuOption::IMPORT_FROM_DISK:
 			disk_dialog->popup_file_dialog();
@@ -118,7 +96,8 @@ void EditorPackageLibrary::_api_request(const String &p_request, RequestType p_r
 	requesting = p_request_type;
 
 	request->request(host + p_request + p_arguments);
-	DLog("[Package] requesting: %s%s", p_request, p_arguments);
+
+	ED_MSG("[Package] requesting: %s%s", p_request, p_arguments);
 }
 
 void EditorPackageLibrary::_http_request_completed(int p_status, int p_code, const PackedStringArray &headers, const PackedByteArray &p_data) {
@@ -192,12 +171,14 @@ void EditorPackageLibrary::_http_request_completed(int p_status, int p_code, con
 					continue;
 
 				PackageInfo pkg_info = {
-					PackageSource::REGISTRY,
-					info["name"],
-					info["version"],
-					info["description"],
-					info["author"],
-					info["date"],
+					{
+							PackageSource::REGISTRY,
+							info["name"],
+							info["version"],
+							info["description"],
+							info["author"],
+							info["date"],
+					},
 					*key,
 				};
 				package_map.insert(*key, pkg_info);
@@ -234,6 +215,8 @@ void EditorPackageLibrary::_http_request_completed(int p_status, int p_code, con
 			info.versions.sort_custom<PackageVersionCompare>();
 			_update_package_tree();
 		} break;
+		default:
+			break;
 	}
 }
 
@@ -271,6 +254,7 @@ TreeItem *EditorPackageLibrary::create_package_item(TreeItem *p_parent, const Pa
 	bool has_update = false;
 	for (int n = versions.size() - 1; n >= 0; n--) {
 		auto sub_item = create_package_subitem(item, p_info, versions[n].ver);
+		sub_item->set_text_alignment(0, HORIZONTAL_ALIGNMENT_RIGHT);
 		sub_item->set_custom_font_size(0, 12 * EDSCALE);
 		sub_item->set_metadata(2, versions[n].source);
 		if (p_info.install_source == versions[n].source && p_info.install_ver == versions[n].ver) {
@@ -293,6 +277,7 @@ TreeItem *EditorPackageLibrary::create_package_item(TreeItem *p_parent, const Pa
 	if (!has_ver) {
 		auto other = create_package_subitem(item, p_info, "");
 		other->set_text(0, STTR("See other versions"));
+		other->set_text_alignment(0, HORIZONTAL_ALIGNMENT_RIGHT);
 		other->set_custom_font_size(0, 12 * EDSCALE);
 	}
 
@@ -354,6 +339,14 @@ void EditorPackageLibrary::_update_installed_packages() {
 				info.desc = install_data.desc;
 				info.author = install_data.author;
 				info.date = install_data.date;
+			}
+
+			if (install_data.source == PackageSource::REGISTRY) {
+				for (int i = info.versions.size() - 1; i >= 0; i--) {
+					if (info.versions[i].source != PackageSource::REGISTRY) {
+						info.versions.remove_at(i);
+					}
+				}
 			}
 
 			if (install_data.source != PackageSource::REGISTRY || !install_data.is_version(info)) {
@@ -467,7 +460,7 @@ void EditorPackageLibrary::_tree_item_selected() {
 
 	if (IS_EMPTY(package_ver)) {
 		item->set_metadata(0, Variant());
-		item->set_text(0, STTR("Fetching..."));
+		item->set_text(0, STTR("Loading..."));
 		_request_package_ver();
 		return;
 	}
@@ -485,7 +478,7 @@ void EditorPackageLibrary::_tree_item_selected() {
 	version_label->set_text(vformat("%s %s - %s", STTR("Version"), package_ver, package_src == PackageSource::REGISTRY ? info.date : short_src));
 	String desc = info.desc.strip_edges(false, true);
 	// if (!IS_EMPTY(info.install_ver) && info.install_source != PackageSource::REGISTRY) {
-	// 	desc += " \n \n" + STTR("Installed From:") + " \n  " + get_package_install_source(info.id);
+	// 	desc += " \n \n" + STTR("Installed From:") + " \n  " + EditorPackageSystem::get_singleton()->get_package_source(info.id);
 	// }
 	desc_label->set_text(desc);
 
@@ -515,7 +508,6 @@ void EditorPackageLibrary::_tree_item_collapsed(TreeItem *p_item) {
 	const auto &info = package_map[package_id];
 	if (p_item->is_collapsed()) {
 		uncollapsed_packages.erase(info.id);
-		p_item->set_selectable(0, true);
 		if (!building_tree) {
 			p_item->select(0);
 		}
@@ -535,7 +527,6 @@ void EditorPackageLibrary::_tree_item_collapsed(TreeItem *p_item) {
 		if (!building_tree) {
 			prefer->select(0);
 		}
-		p_item->set_selectable(0, false);
 	}
 }
 
@@ -548,10 +539,29 @@ void EditorPackageLibrary::_install_selected_package() {
 	const auto &info = package_map[package_id];
 
 	if (IS_EMPTY(info.install_ver) || info.install_source != package_src || info.install_ver != package_ver) {
-		update_pakcage_manifest(info.id, package_ver);
+		EditorPackageSystem::get_singleton()->install_package(info.id, package_ver);
 	} else {
-		update_pakcage_manifest(info.id, Variant());
+		EditorPackageSystem::get_singleton()->uninstall_package(info.id);
 	}
+}
+
+void EditorPackageLibrary::_extend_package_context_menu() {
+	EditorUtils::add_menu_item("FileSystem/Reload Package Plugin", callable_mp(this, &EditorPackageLibrary::_package_reload_action));
+}
+
+bool EditorPackageLibrary::_package_reload_action(bool p_validate, const PackedStringArray p_paths) {
+	if (p_paths.size() != 1 || !p_paths[0].begins_with(DIR_PLUGINS))
+		return false;
+
+	String plugin_path = PATH_JOIN(p_paths[0], "plugin.cfg");
+
+	if (p_validate) {
+		return FileAccess::exists(plugin_path);
+	}
+
+	EditorPackageSystem::get_singleton()->_disable_plugin(plugin_path);
+	MessageQueue::get_singleton()->push_callable(callable_mp(EditorPackageSystem::get_singleton(), &EditorPackageSystem::_enable_plugin).bind(plugin_path, String()));
+	return true;
 }
 
 EditorPackageLibrary::EditorPackageLibrary() {
@@ -727,13 +737,15 @@ PackageLibraryEditorPlugin::PackageLibraryEditorPlugin() {
 	tab_container->add_child(package_library);
 	package_library->set_name(STTR("Packages"));
 
-	auto childern = EditorNode::get_singleton()->get_main_screen_control()->find_children("", EditorAssetLibrary::get_class_static(), false, false);
-	if (childern.size()) {
-		addon_library = Object::cast_to<EditorAssetLibrary>(childern[0]);
-		main_screen_control->remove_child(addon_library);
+	if (AssetLibraryEditorPlugin::is_available()) {
+		auto childern = EditorNode::get_singleton()->get_main_screen_control()->find_children("", EditorAssetLibrary::get_class_static(), false, false);
+		if (childern.size()) {
+			addon_library = Object::cast_to<EditorAssetLibrary>(childern[0]);
+			main_screen_control->remove_child(addon_library);
 
-		tab_container->add_child(addon_library);
-		addon_library->set_name(STTR("Addons"));
+			tab_container->add_child(addon_library);
+			addon_library->set_name(STTR("Addons"));
+		}
 	}
 
 	tab_container->hide();
@@ -758,7 +770,7 @@ void AddGitSourceDialog::ok_pressed() {
 		repo_url = repo_url + "?path=" + subpath;
 	}
 
-	update_pakcage_manifest(package_id, repo_url);
+	EditorPackageSystem::get_singleton()->install_package(package_id, repo_url);
 
 	hide();
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ClassAnnotation" inherits="BaseResourceAnnotation" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_script_annotation" qualifiers="static">
+			<return type="ClassAnnotation" />
+			<param index="0" name="script" type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="base_class_name_or_script_path" type="String" setter="set_base_class_name_or_script_path" getter="get_base_class_name_or_script_path" default="&quot;&quot;">
+		</member>
+		<member name="constants" type="ConstantAnnotation[]" setter="set_constants" getter="get_constants" default="[]">
+		</member>
+		<member name="enums" type="EnumAnnotation[]" setter="set_enums" getter="get_enums" default="[]">
+		</member>
+		<member name="internal_classes" type="ClassAnnotation[]" setter="set_internal_classes" getter="get_internal_classes" default="[]">
+		</member>
+		<member name="methods" type="MethodAnnotation[]" setter="set_methods" getter="get_methods" default="[]">
+		</member>
+		<member name="properties" type="PropertyAnnotation[]" setter="set_properties" getter="get_properties" default="[]">
+		</member>
+		<member name="signals" type="SignalAnnotation[]" setter="set_signals" getter="get_signals" default="[]">
+		</member>
+		<member name="tool" type="bool" setter="set_tool" getter="is_tool" default="false">
+		</member>
+	</members>
+</class>

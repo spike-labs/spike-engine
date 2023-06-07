@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ModularResource" inherits="ModularData" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<members>
+		<member name="ext" type="int" setter="set_ext" getter="get_ext" default="0">
+		</member>
+		<member name="module_comment" type="String" setter="set_module_comment" getter="get_module_comment" default="&quot;&quot;">
+		</member>
+		<member name="module_name" type="String" setter="set_module_name" getter="get_module_name" default="&quot;&quot;">
+		</member>
+		<member name="resources" type="Array" setter="set_resources" getter="get_resources" default="[]">
+		</member>
+	</members>
+</class>

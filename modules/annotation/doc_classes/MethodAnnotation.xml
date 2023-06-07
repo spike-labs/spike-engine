@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="MethodAnnotation" inherits="MemberAnnotation" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<members>
+		<member name="parameters" type="ParameterAnnotation[]" setter="set_parameters" getter="get_parameters" default="[]">
+		</member>
+		<member name="return_value" type="VariableAnnotation" setter="set_return_value" getter="get_return_value">
+		</member>
+		<member name="static" type="bool" setter="set_static" getter="is_static" default="false">
+		</member>
+	</members>
+</class>

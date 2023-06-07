@@ -1,15 +1,25 @@
+/**
+ * spike_filesystem_dock.h
+ *
+ * This file is part of Spike engine, a modification and extension of Godot.
+ *
+ */
 #ifndef SPIKE_FILESYSTEM_DOCK_H
 #define SPIKE_FILESYSTEM_DOCK_H
 
 #include "node_context_ref.h"
 #include "spike_define.h"
-#include <godot/editor/filesystem_dock.h>
-#include "resource_recognizer.h"
+#include <editor/filesystem_dock.h>
 
 class EditorNode;
 
 class SpikeFileSystemDock : public FileSystemDock {
 	GDCLASS(SpikeFileSystemDock, FileSystemDock);
+
+	enum FileMenuExt {
+		UPDATE_FILE = 50,
+		CUSTOM_CALLBACK = 100,
+	};
 
 	struct MenuItem {
 		PackedStringArray menus;
@@ -27,6 +37,7 @@ private:
 		emit_signal("dirs_and_files_before_remove", files_to_delete, dirs_to_delete);
 	}
 	void _try_update_file_thumbnail(PackedStringArray resources);
+	void _file_menu_check_uid_missing(PopupMenu *p_menu, const String &p_path);
 
 	Vector<String> plugin_uncollapsed_paths;
 
@@ -52,8 +63,6 @@ protected:
 
 	virtual bool _create_tree(TreeItem *p_parent, EditorFileSystemDirectory *p_dir, Vector<String> &uncollapsed_paths, bool p_select_in_favorites, bool p_unfold_path = false) override;
 	virtual void _update_file_list(bool p_keep_selection) override;
-
-	virtual void _select_file(const String &p_path, bool p_select_in_favorites = false) override;
 
 public:
 	SpikeFileSystemDock();

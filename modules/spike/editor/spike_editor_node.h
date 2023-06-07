@@ -17,12 +17,14 @@ class SpikeEditorNode : public EditorNode {
 	enum SpikeMenuOption {
 		__OPTION_START = 200,
 		HELP_SPIKE_WEBSITE,
+		HELP_SPIKE_DEVELOPER,
+		HELP_SPIKE_WEB3,
 		HELP_SUPPORT_SPIKE_DEVELOPMENT,
 	};
 
 	NodeContextRef<PackedStringArray> *custom_menus;
 
-	AcceptDialog *_load_info_dialog;
+	AcceptDialog *_account_manage = nullptr;
 
 	Button *_custom_warning_btn;
 	Callable _custom_warning_callable;
@@ -70,6 +72,8 @@ public:
 
 	void add_main_screen_editor_plugin(EditorPlugin *p_plugin, int p_tab_index = -1);
 	void exit_editor(int p_exit_code) { _exit_editor(p_exit_code); }
+
+	Ref<RefCounted> get_web3_user();
 };
 
 #endif // SPIKE_EDITOR_NODE_H

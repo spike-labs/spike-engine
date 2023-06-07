@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="NodeAnnotation" inherits="Annotation" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<members>
+		<member name="node_path" type="NodePath" setter="set_node_path" getter="get_node_path" default="NodePath(&quot;&quot;)">
+		</member>
+		<member name="properties" type="PropertyAnnotation[]" setter="set_properties" getter="get_properties" default="[]">
+		</member>
+	</members>
+</class>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ModularData" inherits="Resource" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_edit_data" qualifiers="virtual">
+			<return type="void" />
+			<param index="0" name="" type="Object" />
+			<description>
+			</description>
+		</method>
+		<method name="_export_data" qualifiers="virtual">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="_get_export_name" qualifiers="virtual">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="_get_module_info" qualifiers="virtual">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="_validation" qualifiers="virtual">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="export_name" type="String" setter="set_export_name" getter="get_export_name" default="&quot;&quot;">
+		</member>
+	</members>
+	<signals>
+		<signal name="name_changed">
+			<param index="0" name="name" type="String" />
+			<description>
+			</description>
+		</signal>
+	</signals>
+</class>

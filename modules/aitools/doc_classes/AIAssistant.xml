@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="AIAssistant" inherits="HTTPRequest" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_message">
+			<return type="void" />
+			<param index="0" name="role" type="int" />
+			<param index="1" name="content" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_current_model">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_message_content">
+			<return type="String" />
+			<param index="0" name="index" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_message_count">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_message_role">
+			<return type="int" />
+			<param index="0" name="index" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_model_count">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_model_id">
+			<return type="String" />
+			<param index="0" name="index" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_status">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="select_model">
+			<return type="void" />
+			<param index="0" name="index" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="send_message">
+			<return type="bool" />
+			<param index="0" name="content" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="setup">
+			<return type="void" />
+			<param index="0" name="api_key" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="setup_network">
+			<return type="void" />
+			<param index="0" name="proxy_host" type="String" />
+			<param index="1" name="proxy_port" type="int" />
+			<param index="2" name="use_threads" type="bool" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<signals>
+		<signal name="message_received">
+			<param index="0" name="role" type="int" />
+			<param index="1" name="content" type="String" />
+			<description>
+			</description>
+		</signal>
+		<signal name="status_changed">
+			<param index="0" name="status" type="int" />
+			<description>
+			</description>
+		</signal>
+	</signals>
+</class>

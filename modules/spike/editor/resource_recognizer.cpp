@@ -1,3 +1,9 @@
+/**
+ * resource_recognizer.cpp
+ *
+ * This file is part of Spike engine, a modification and extension of Godot.
+ *
+ */
 #include "resource_recognizer.h"
 
 ResourceRecognizer *ResourceRecognizer::singleton = nullptr;

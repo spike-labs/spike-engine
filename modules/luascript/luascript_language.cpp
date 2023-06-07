@@ -165,10 +165,6 @@ String LuaScriptLanguage::get_extension() const {
 	return LUA_EXTENSION;
 }
 
-Error LuaScriptLanguage::execute_file(const String &p_path) {
-	return OK;
-}
-
 void LuaScriptLanguage::finish() {
 	if (singleton4lua) {
 		memdelete(singleton4lua);
@@ -411,7 +407,11 @@ bool LuaScriptLanguage::validate(const String &p_script, const String &p_path,
 					ScriptLanguage::ScriptError e;
 					e.line = 0;
 					e.column = 0;
+#if TOOLS_ENABLED
 					String msg_fmt = STTR("table expected, return %s");
+#else
+					String msg_fmt = "table expected, return %s";
+#endif
 					e.message = vformat(msg_fmt, lua_typename(L, rtype));
 					r_errors->push_back(e);
 				}
@@ -422,7 +422,7 @@ bool LuaScriptLanguage::validate(const String &p_script, const String &p_path,
 					if (lua_isfunction(L, -1)) {
 						auto func_name = String(lua_tostring(L, -2));
 						lua_Debug ar;
-     					lua_getinfo(L, ">S", &ar);
+						lua_getinfo(L, ">S", &ar);
 						r_functions->push_back(func_name + ":" + itos(ar.linedefined));
 					} else {
 						lua_pop(L, 1);
@@ -781,21 +781,6 @@ int LuaScriptLanguage::profiling_get_accumulated_data(ProfilingInfo *p_info_arr,
 int LuaScriptLanguage::profiling_get_frame_data(ProfilingInfo *p_info_arr, int p_info_max) { // TODO
 
 	return -1;
-}
-
-void *LuaScriptLanguage::alloc_instance_binding_data(Object *p_object) { // TODO
-
-	return nullptr;
-}
-
-void LuaScriptLanguage::free_instance_binding_data(void *p_data) {
-}
-
-void LuaScriptLanguage::refcount_incremented_instance_binding(Object *p_object) {
-}
-
-bool LuaScriptLanguage::refcount_decremented_instance_binding(Object *p_object) {
-	return true;
 }
 
 void LuaScriptLanguage::frame() {

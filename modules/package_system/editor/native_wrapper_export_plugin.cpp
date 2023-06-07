@@ -1,4 +1,3 @@
-
 /**
  * native_wrapper_export_plugin.cpp
  *
@@ -20,6 +19,16 @@ static bool check_all_tags_met(const Vector<String> &tags, const HashSet<String>
 	return all_tags_met;
 }
 
+static String _get_shared_path(const String &p_dst, String p_path) {
+	if (p_path.is_absolute_path()) {
+		print_line("Skipping export of out-of-project library " + p_path);
+		return String();
+	} else if (!p_path.is_resource_file()) {
+		p_path = p_dst.get_base_dir().path_join(p_path);
+	}
+	return p_path;
+}
+
 void NativeWrapperExportPlugin::_export_file(const String &p_path, const String &p_type, const HashSet<String> &p_features) {
 	if (p_type != "NativeWrapper") {
 		return;
@@ -39,15 +48,28 @@ void NativeWrapperExportPlugin::_export_file(const String &p_path, const String 
 	for (const String &E : libraries) {
 		Vector<String> tags = E.split(".");
 		if (check_all_tags_met(tags, p_features)) {
-			String value = config->get_value("libraries", E);
-			if (value.is_absolute_path()) {
-				print_line("Skipping export of out-of-project library " + value);
-				continue;
-			} else if (!value.is_resource_file()) {
-				value = p_path.get_base_dir().path_join(value);
+			auto value = config->get_value("libraries", E);
+			switch (value.get_type()) {
+				case Variant::STRING: {
+					String path = _get_shared_path(p_path, value);
+					if (!IS_EMPTY(path)) {
+						add_shared_object(path, tags);
+						found = true;
+					}
+				} break;
+				case Variant::ARRAY: {
+					Array array = value;
+					for (int i = 0; i < array.size(); ++i) {
+						String path = _get_shared_path(p_path, array[i]);
+						if (!IS_EMPTY(path)) {
+							add_shared_object(path, tags);
+							found = true;
+						}
+					}
+				} break;
+				default:
+					break;
 			}
-			add_shared_object(value, tags);
-			found = true;
 		}
 	}
 
@@ -56,7 +78,6 @@ void NativeWrapperExportPlugin::_export_file(const String &p_path, const String 
 		for (const String &E : p_features) {
 			features.append(E);
 		}
-		ERR_FAIL_MSG(vformat("Couldn't export extension: %s. No suitable library found for export flags: %s", p_path, String(", ").join(features)));
 	}
 
 	List<String> dependencies;

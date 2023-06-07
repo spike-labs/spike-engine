@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ProjectScanner" inherits="RefCounted" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_scene_texts" qualifiers="const">
+			<return type="Dictionary" />
+			<param index="0" name="path" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_scenes" qualifiers="const">
+			<return type="PackedStringArray" />
+			<description>
+			</description>
+		</method>
+		<method name="get_translations" qualifiers="const">
+			<return type="PackedStringArray" />
+			<description>
+			</description>
+		</method>
+		<method name="scan">
+			<return type="int" enum="Error" />
+			<param index="0" name="provider" type="FileProvider" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

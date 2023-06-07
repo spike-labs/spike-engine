@@ -1,0 +1,1139 @@
+# LANGUAGE translation of the Spike Engine editor.
+# Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
+# Copyright (c) 2014-2022 Spike Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Spike source code.
+#
+# hongfeng.wu <hongfeng.wu0813@gmail.com>, 2022.
+# xingweizhen <xingweizhen@oasis.world>, 2022.
+# hongfeng.wu <hongfeng.wu0813@oasis.world>, 2022, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: Spike Engine editor\n"
+"Report-Msgid-Bugs-To: http://gitlab-ce.oasis.world/engine/spike\n"
+"PO-Revision-Date: 2023-05-17 11:40+0000\n"
+"Last-Translator: hongfeng.wu <hongfeng.wu0813@oasis.world>\n"
+"Language-Team: Chinese (Simplified) <http://weblate.example.com/projects/"
+"spike/editor/zh_Hans/>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14.2\n"
+
+#: aitools/editor/editor_aitools_panel.cpp
+msgctxt "Spike"
+msgid "Copy code"
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+msgctxt "Spike"
+msgid "Model: "
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+msgctxt "Spike"
+msgid "Prompts File: "
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+msgctxt "Spike"
+msgid "Ai Tools"
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+msgctxt "Spike"
+msgid "Gpt"
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+msgctxt "Spike"
+msgid "Optimize For Gdscript"
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+msgctxt "Spike"
+msgid "Api Key"
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+msgctxt "Spike"
+msgid "Default Model"
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Asset Library"
+msgstr ""
+
+#: aitools/editor/editor_aitools_panel.cpp
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Use Threads"
+msgstr ""
+
+#: aitools/register_types.cpp
+msgctxt "Spike"
+msgid "Coding Helper"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Comment"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Member Name"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Class Name Or Script Path"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Open Source"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Target Resource Path"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Value"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+#: configuration/editor/configuration_table_inspector.cpp
+#: luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "Type"
+msgstr "类型"
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Class Name"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Default Value Text"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+#: modular_system/editor/modular_definition_dialog.cpp
+msgctxt "Spike"
+msgid "Readonly"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Value Text"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Return Value"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Static"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Node Path"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Base Class Name Or Script Path"
+msgstr ""
+
+#: annotation/annotation_resource.cpp
+msgctxt "Spike"
+msgid "Tool"
+msgstr ""
+
+#: annotation/annotation_resource.cpp modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Module Name"
+msgstr ""
+
+#: configuration/editor/configuration_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Configuration Editor"
+msgstr ""
+
+#: configuration/editor/configuration_resource_editor.cpp
+msgctxt "Spike"
+msgid "New Configuration Set..."
+msgstr ""
+
+#: configuration/editor/configuration_set_inspector.cpp
+msgctxt "Spike"
+msgid "Please enter a configuration name"
+msgstr ""
+
+#: configuration/editor/configuration_set_inspector.cpp
+msgctxt "Spike"
+msgid "Configuration already exists: %s"
+msgstr ""
+
+#: configuration/editor/configuration_table_inspector.cpp
+msgctxt "Spike"
+msgid "Name"
+msgstr ""
+
+#: configuration/editor/configuration_table_inspector.cpp
+msgctxt "Spike"
+msgid "Insert 1 row above"
+msgstr ""
+
+#: configuration/editor/configuration_table_inspector.cpp
+msgctxt "Spike"
+msgid "Insert 1 row below"
+msgstr ""
+
+#: configuration/editor/configuration_table_inspector.cpp
+msgctxt "Spike"
+msgid "Delete row"
+msgstr ""
+
+#: configuration/editor/configuration_table_inspector.cpp
+msgctxt "Spike"
+msgid "Insert 1 column left"
+msgstr ""
+
+#: configuration/editor/configuration_table_inspector.cpp
+msgctxt "Spike"
+msgid "Insert 1 column right"
+msgstr ""
+
+#: configuration/editor/configuration_table_inspector.cpp
+msgctxt "Spike"
+msgid "Delete column"
+msgstr ""
+
+#: luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "table expected, return %s"
+msgstr ""
+
+#: luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "Text Editor"
+msgstr "文本编辑器"
+
+#: luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "Indent"
+msgstr "订货单"
+
+#: luascript/luascript_language.cpp
+msgctxt "Spike"
+msgid "Size"
+msgstr "大小"
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Export Name"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Resources"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Ext"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Module Comment"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+#: modular_system/editor/modular_editor_plugin.cpp
+#: modular_system/editor/modular_editor_plugin.h
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "[Unnamed]"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "File Path"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+#: modular_system/editor/modular_editor_plugin.h
+msgctxt "Spike"
+msgid "Text, Localization"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Visual texts and localizations."
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+#: modular_system/editor/modular_editor_plugin.h
+msgctxt "Spike"
+msgid "Configuration, Serialization"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Program Datas."
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Unannotated Files"
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Unannotated files."
+msgstr ""
+
+#: modular_system/editor/modular_data.cpp
+msgctxt "Spike"
+msgid "Add Local File..."
+msgstr ""
+
+#: modular_system/editor/modular_data_inspector_plugin.cpp
+msgctxt "Spike"
+msgid "Count"
+msgstr ""
+
+#: modular_system/editor/modular_data_inspector_plugin.cpp
+msgctxt "Spike"
+msgid "Select Resources"
+msgstr ""
+
+#: modular_system/editor/modular_definition_dialog.cpp
+msgctxt "Spike"
+msgid "Value:"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Resolved files: %d/%d"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Create new modular graph"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular New&Connect Node"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Add Connection"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Delete Connection"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Delete Node"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Move Node"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Module In/Out Configuration"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Module Annotation"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "You must save modular to a file before playing."
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Unable to run modular. See the log for details"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "You must save modular to a file before exporting."
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Select a directory to export and run the modular graph"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Select a directory to export modular graph"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Create Node"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Paste Nodes"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Delete Nodes"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Resource type dismatch! (Expected a [ModularGraph])"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Set Node Resource Source"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Change Ports"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Unable to export modular. See the log for details"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Text"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Configuration"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Run Composite Module"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Export Composite..."
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Add Language"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "View module definitions..."
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Edit input and output ports..."
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Selecte packed file to add..."
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Modular Set Resource"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Select a directory for the External Translation/Text file"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Select a directory for the Configuration Patch file"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Select a directory for the overrided module files"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Import Modular"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Locate at main node"
+msgstr ""
+
+#: modular_system/editor/modular_editor_plugin.cpp
+msgctxt "Spike"
+msgid "Discard"
+msgstr ""
+
+#: modular_system/editor/modular_importer.cpp
+msgctxt "Spike"
+msgid "Select a modular to import"
+msgstr ""
+
+#: modular_system/editor/modular_port_dialog.cpp
+msgctxt "Spike"
+msgid ""
+"Module Missing! No module named '%s' was found in the current node. Please "
+"check the resources referenced by the node."
+msgstr ""
+
+#: modular_system/editor/modular_port_dialog.cpp
+msgctxt "Spike"
+msgid "NEW Modules..."
+msgstr ""
+
+#: modular_system/editor/modular_port_dialog.cpp
+msgctxt "Spike"
+msgid "Missing"
+msgstr ""
+
+#: modular_system/editor/modular_port_dialog.cpp
+msgctxt "Spike"
+msgid "Available Modules"
+msgstr ""
+
+#: modular_system/editor/modular_port_dialog.cpp
+msgctxt "ModularPort"
+msgid "In"
+msgstr ""
+
+#: modular_system/editor/modular_port_dialog.cpp
+msgctxt "ModularPort"
+msgid "Out"
+msgstr ""
+
+#: package_system/editor/editor_export_defination.cpp
+msgctxt "Spike"
+msgid "Exclude"
+msgstr "排除"
+
+#: package_system/editor/editor_package_dialog.cpp
+msgctxt "Spike"
+msgid "Spike package System"
+msgstr "Spike插件包系统"
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Currently Installed"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Update Available"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "See other versions"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Loading..."
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Develop"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Version"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Installed From:"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Install"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+#, fuzzy
+#| msgctxt "Spike"
+#| msgid "Update Plugins"
+msgctxt "Spike"
+msgid "Update to %s"
+msgstr "更新插件包"
+
+#: package_system/editor/editor_package_library.cpp
+#, fuzzy
+msgctxt "Spike"
+msgid "Remove"
+msgstr "删除组"
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Add package from git URL..."
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Add package from disk..."
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+#, fuzzy
+msgctxt "Spike"
+msgid "Registry"
+msgstr "注册"
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "In Project"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Filter Packages"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Packages"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Addons"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Git Repo URL:"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Branch or Tag (optional):"
+msgstr ""
+
+#: package_system/editor/editor_package_library.cpp
+msgctxt "Spike"
+msgid "Sub path (optional):"
+msgstr ""
+
+#: package_system/editor/editor_package_source.cpp
+msgctxt "Spike"
+msgid "An error(#%d) occurred while loading the package locally."
+msgstr "从本地加载包时出错 （#%d）。"
+
+#: package_system/editor/editor_package_source_git.cpp
+msgctxt "Spike"
+msgid "An error(#%d) occurred while loading package from git repositoy."
+msgstr "从 git 存储库加载包时出错 （#%d）。"
+
+#: package_system/editor/editor_package_source_registry.cpp
+msgctxt "Spike"
+msgid ""
+"An error occurred while downloading package archive.\n"
+"%s"
+msgstr ""
+"下载包存档时出错。\n"
+"%s"
+
+#: package_system/editor/editor_package_source_registry.cpp
+msgctxt "Spike"
+msgid "An error(#%d) occurred while unzip package archive."
+msgstr "解压缩包存档时出错 （#%d）。"
+
+#: package_system/editor/editor_package_source_registry.cpp
+msgctxt "Spike"
+msgid "Uncompressing"
+msgstr "正在解压"
+
+#: package_system/editor/editor_package_source_registry.cpp
+msgctxt "Spike"
+msgid "Downloading"
+msgstr "正在下载"
+
+#: package_system/editor/editor_package_system.cpp
+msgctxt "Spike"
+msgid "Update Plugins"
+msgstr "更新插件包"
+
+#: package_system/editor/editor_package_system.cpp
+msgctxt "Spike"
+msgid ""
+"The plugin '%s' is in use, please restart the editor for complete unloading."
+msgstr "包内插件 '%s' 正在使用中，请重新启动编辑器以完成卸载。"
+
+#: package_system/editor/editor_package_system.cpp
+msgctxt "Spike"
+msgid ""
+"The plugin '%s' is in use, please restart the editor for loading another "
+"version."
+msgstr "包内插件 '%s' 正在使用中，请重新启动编辑器以加载另一个版本。"
+
+#: package_system/editor/editor_package_system.h
+msgctxt "Spike"
+msgid "Active plugin: "
+msgstr "启用插件： "
+
+#: package_system/editor/editor_package_system.h
+msgctxt "Spike"
+msgid "success"
+msgstr "成功"
+
+#: package_system/editor/editor_package_system.h
+msgctxt "Spike"
+msgid "fail"
+msgstr "失败"
+
+#: package_system/editor/editor_package_system.h
+msgctxt "Spike"
+msgid "Deactive plugin: "
+msgstr "禁用插件： "
+
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Package"
+msgstr ""
+
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Select Package For Modular"
+msgstr ""
+
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Use installed version: %s"
+msgstr ""
+
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Version Conflict"
+msgstr ""
+
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Resolve: Use installed %s"
+msgstr ""
+
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Resolve: Update to %s"
+msgstr ""
+
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "Select a installed package..."
+msgstr ""
+
+#: package_system/editor/modular_package.cpp
+msgctxt "Spike"
+msgid "<No name>"
+msgstr ""
+
+#: package_system/native_wrapper.cpp
+msgctxt "Spike"
+msgid "Symbol Prefix"
+msgstr "符号前缀"
+
+#: package_system/native_wrapper.cpp
+msgctxt "Spike"
+msgid "Libraries"
+msgstr "动态库"
+
+#: package_system/native_wrapper.cpp
+msgctxt "Spike"
+msgid "Dependencies"
+msgstr "依赖项"
+
+#: spike/editor/import/spike_resource_importer_texture_atlas.cpp
+msgctxt "Spike"
+msgid ""
+"There are multiple importers for different types pointing to file %s, import "
+"aborted"
+msgstr "不同类型的多个导入程序指向文件 %s，导入已中止"
+
+#: spike/editor/spike_editor_about.cpp
+msgctxt "Spike"
+msgid "About Spike Engine"
+msgstr ""
+
+#: spike/editor/spike_editor_about.cpp
+msgctxt "Spike"
+msgid "< Back"
+msgstr ""
+
+#: spike/editor/spike_editor_about.cpp
+msgctxt "Spike"
+msgid "Spike Engine developers"
+msgstr ""
+
+#: spike/editor/spike_editor_menu.cpp
+#, fuzzy
+#| msgctxt "Spike"
+#| msgid "Spike package System"
+msgctxt "Spike"
+msgid "Spike Website"
+msgstr "Spike插件包系统"
+
+#: spike/editor/spike_editor_menu.cpp
+msgctxt "Spike"
+msgid "Spike Developer"
+msgstr ""
+
+#: spike/editor/spike_editor_menu.cpp spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Enter Decentralized Network..."
+msgstr ""
+
+#: spike/editor/spike_editor_menu.cpp
+msgctxt "Spike"
+msgid "Godot Help"
+msgstr ""
+
+#: spike/editor/spike_filesystem_dock.cpp
+#, fuzzy
+#| msgctxt "Spike"
+#| msgid "Update Plugins"
+msgctxt "Spike"
+msgid "Update File"
+msgstr "更新插件包"
+
+#: spike/editor/spike_filesystem_dock.cpp
+msgctxt "Spike"
+msgid "PACKAGES"
+msgstr "插件包"
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Insufficient password length"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Password mismatch"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Create Password"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid ""
+"This password will only unlock your Spike wallet on this device. Spike "
+"cannot recover this password."
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "New password (at least 8 characters)"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Confirm Password"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "I understand that Spike cannot recover this password for me."
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Validate Password"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Input Password"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Import Account"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Choose Type"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Mnemonic"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Private Key"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Please enter your mnemonic below:"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Please paste your private key:"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Your Account:"
+msgstr ""
+
+#: spike/editor/web3/web3_account_manage.cpp
+msgctxt "Spike"
+msgid "Logout"
+msgstr ""
+
+#: editor/translation_override.h
+msgctxt "Override"
+msgid "Shader Editor"
+msgstr "着色器编辑器"
+
+#: editor/translation_override.h
+msgctxt "Override"
+msgid "About Godot"
+msgstr "关于 Spike"
+
+#: editor/translation_override.h
+msgctxt "Spike"
+msgid "Extension"
+msgstr ""
+
+#~ msgctxt "Spike"
+#~ msgid "spike package loading detail info"
+#~ msgstr "Spike插件包加载详细信息"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Local Plugins"
+#~ msgstr "本地插件"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Remote Plugins"
+#~ msgstr "远程插件"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Spike Plugins"
+#~ msgstr "尖峰插件"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Retarget Profile"
+#~ msgstr "重新定位配置文件"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Retarget Option"
+#~ msgstr "重定向选项"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Source Skeleton"
+#~ msgstr "源骨架"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Source Map"
+#~ msgstr "源地图"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Target Skeleton"
+#~ msgstr "目标骨架"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Target Map"
+#~ msgstr "目标地图"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Retarget Position"
+#~ msgstr "重新定位位置"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Retarget Rotation"
+#~ msgstr "重定向轮换"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Retarget Scale"
+#~ msgstr "重新定位规模"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Append Item"
+#~ msgstr "追加项"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Current Group"
+#~ msgstr "当前组"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Current Intermediate Bone"
+#~ msgstr "当前中间骨"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Bone Picker:"
+#~ msgstr "骨头拾取器："
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Set Retarget Profile Property"
+#~ msgstr "设置重定向配置文件属性"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Add Intermediate Bone"
+#~ msgstr "添加中间骨骼"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Remove Intermediate Bone"
+#~ msgstr "去除中间骨"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Add Group"
+#~ msgstr "添加组"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Editors"
+#~ msgstr "编辑"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Retarget Mapper"
+#~ msgstr "重定向映射器"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Button Colors"
+#~ msgstr "按钮颜色"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Set"
+#~ msgstr "设置"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Error"
+#~ msgstr "错误"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Unset"
+#~ msgstr "未凝固的"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Set Retarget Option Property"
+#~ msgstr "设置重定向选项属性"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Add Retarget Option Item"
+#~ msgstr "添加重定向选项项"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Remove Retarget Map Item"
+#~ msgstr "移除重定向地图项目"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Set Retarget Map Property"
+#~ msgstr "设置重定向映射属性"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Set Bone Name"
+#~ msgstr "设置骨骼名称"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Add Retarget Map Item"
+#~ msgstr "添加重定向地图项目"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Shader"
+#~ msgstr "着色"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid ""
+#~ "The selected resource (%s) does not match any type expected for this "
+#~ "property (%s)."
+#~ msgstr "所选资源 （%s） 与此属性 （%s） 的任何预期类型都不匹配。"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Warnning"
+#~ msgstr "警告"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "The selected shader mode (%s) does not match for this material (%s)"
+#~ msgstr "所选着色器模式 （%s） 与此材质 （%s） 不匹配"
+
+#, fuzzy
+#~ msgctxt "Spike"
+#~ msgid "Convert Material"
+#~ msgstr "转化材质球"

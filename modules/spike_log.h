@@ -9,6 +9,12 @@
 #include "core/string/print_string.h"
 #include "core/variant/variant.h"
 
+#ifdef TOOLS_ENABLED
+#define ED_MSG(fmt, ...) EditorNode::get_singleton()->get_log()->add_message(vformat(String(fmt), __VA_ARGS__), EditorLog::MSG_TYPE_EDITOR)
+#else
+#define ED_MSG(fmt, ...)
+#endif
+
 #ifdef DEBUG_ENABLED
 #define VLog(fmt, ...) print_verbose(vformat(String(fmt), __VA_ARGS__))
 #define DLog(fmt, ...) print_line(vformat(String(fmt), __VA_ARGS__))

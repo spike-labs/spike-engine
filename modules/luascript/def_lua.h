@@ -1,4 +1,7 @@
-
+/**
+ * This file is part of Lua binding for Godot Engine.
+ *
+ */
 #ifndef _DEF_LUA_
 #define _DEF_LUA_
 

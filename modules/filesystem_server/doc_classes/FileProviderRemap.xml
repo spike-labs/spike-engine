@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="FileProviderRemap" inherits="FileProvider" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_provider_remap">
+			<return type="void" />
+			<param index="0" name="path" type="String" />
+			<param index="1" name="provider" type="FileProvider" />
+			<param index="2" name="to" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="add_remap">
+			<return type="void" />
+			<param index="0" name="path" type="String" />
+			<param index="1" name="to" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="has_remap" qualifiers="const">
+			<return type="bool" />
+			<param index="0" name="path" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="remove_remap">
+			<return type="bool" />
+			<param index="0" name="path" type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

@@ -1,4 +1,3 @@
-
 /**
  * This file is part of Lua binding for Godot Engine.
  * The user data of Godot exists in Lua:

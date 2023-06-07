@@ -1,5 +1,9 @@
-/* resource_loader_extension.h */
-
+/**
+ * resource_loader_extension.h
+ *
+ * This file is part of Spike engine, a modification and extension of Godot.
+ *
+ */
 #ifndef RESOURCE_LOADER_EXTENSION_H
 #define RESOURCE_LOADER_EXTENSION_H
 

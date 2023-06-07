@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="TranslationPatchServer" inherits="TranslationServer" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_patch" qualifiers="static">
+			<return type="int" enum="Error" />
+			<param index="0" name="patch" type="Variant" />
+			<param index="1" name="notify" type="bool" default="true" />
+			<description>
+				Add a translation patch, "patch" can be a file path of type "String", an instance of type "Transation", or a byte stream of type "PackedByteArray"
+			</description>
+		</method>
+		<method name="add_patch_dir" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="dir" type="String" />
+			<param index="1" name="notify" type="bool" default="true" />
+			<description>
+				Add a patch folder and traverse all patch files under the added folder
+			</description>
+		</method>
+		<method name="append_csv_extension" qualifiers="static">
+			<return type="bool" />
+			<param index="0" name="extension" type="String" />
+			<description>
+				Add CSV file extension for recognition read CSV translation patch
+			</description>
+		</method>
+		<method name="append_gettext_extension" qualifiers="static">
+			<return type="bool" />
+			<param index="0" name="extension" type="String" />
+			<description>
+				Add GETTEXT file extension for recognition read GETTEXT translation patch
+			</description>
+		</method>
+		<method name="remove_patch" qualifiers="static">
+			<return type="int" enum="Error" />
+			<param index="0" name="patch" type="Variant" />
+			<param index="1" name="notify" type="bool" default="true" />
+			<description>
+				Remove the translation patch, "patch" can be a file path of type "String", an instance of type "Transation", or a byte stream of type "PackedByteArray"
+			</description>
+		</method>
+		<method name="remove_patch_dir" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="dir" type="String" />
+			<param index="1" name="notify" type="bool" default="true" />
+			<description>
+				Remove a patch folder and traverse all patch files under the removed folder
+			</description>
+		</method>
+	</methods>
+</class>

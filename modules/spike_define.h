@@ -8,14 +8,17 @@
 #define __SPIKE_DEFINE_H
 
 #include "compatible_define.h"
+#include "modules/modules_enabled.gen.h"
+#include "scene/main/node.h"
+#include "spike/spike_utility.h"
 #include "spike/string/sstring.h"
 #include "spike_log.h"
+#include "spike_utils_define.h"
 
 // Replacement of godot object. object `t` must has the same size with type `T`
 #define MEM_REPLACE_OBJ(t, S, T) \
 	(t)->~S();                   \
 	memnew_placement(t, T)
-
 
 #ifdef DEBUG_METHODS_ENABLED
 #define METHID_BIND_REPLACE(T, m, f)                                                          \

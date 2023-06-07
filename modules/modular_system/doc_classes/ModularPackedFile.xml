@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ModularPackedFile" inherits="ModularData" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<members>
+		<member name="file_path" type="String" setter="set_file_path" getter="get_file_path" default="&quot;&quot;">
+		</member>
+	</members>
+</class>

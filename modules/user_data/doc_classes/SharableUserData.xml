@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="SharableUserData" inherits="RefCounted" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+		The user shared data module.
+	</brief_description>
+	<description>
+		The user shared data module allows users to publicly access their application data after authorization. Then the user can authorize other applications to obtain user data for this application.
+		This module relies on the [code]Spike Block Chain SDK[/code] software package. Import the package via AssetLib/Packages Panel.
+		[codeblock]
+		# Initialize application with app id and secret key.
+		SharableUserData.initialize("[app id]", "[secret key]")
+
+		# Create a SharableUserData for each User.
+		userdata = SharableUserData.new()
+		userdata.authorize("[other app id]", ["name", "level"])
+
+		# Connect the signals as needed.
+		userdata.post.connect(_on_post)
+		userdata.fetch.connect(_on_fetch)
+
+		# Post or fetch as needed.
+		userdata.post_data({name = "user", level = 99 }, "sn1")
+		userdata.fetch_data([], "sn2")
+		[/codeblock]
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="authorize">
+			<return type="void" />
+			<param index="0" name="appid" type="String" />
+			<param index="1" name="fields" type="PackedStringArray" />
+			<description>
+				Request authorization from the user to submit their application data to a public database.
+				[param appid] is the application that require user authorization.
+				[param fields] are the data fields that the user allowed to post.
+			</description>
+		</method>
+		<method name="bind_user" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="user" type="RefCounted" />
+			<description>
+				Bind current user to shared data module.
+				[param user] refer to a user object that provides the method [method get_id] to obtain user ID and method [method sign_message] to sign a string. (eg: a wallet instance)
+			</description>
+		</method>
+		<method name="fetch_data">
+			<return type="bool" />
+			<param index="0" name="keys" type="Array" />
+			<param index="1" name="sn" type="Variant" default="null" />
+			<description>
+				Fetch user data from public database.
+				[param keys] are the data fields that you want to fetch.
+				[param sn] is the serial number will pass though [signal fetch].
+			</description>
+		</method>
+		<method name="get_app">
+			<return type="String" />
+			<description>
+				Get the application id.
+			</description>
+		</method>
+		<method name="get_app_info" qualifiers="static">
+			<return type="bool" />
+			<param index="0" name="appid" type="String" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+				[codeblock]
+				SharableUserData.get_app_info("10000", func(data):
+					print("data = ", data)
+				)
+				[/codeblock]
+			</description>
+		</method>
+		<method name="get_user">
+			<return type="String" />
+			<description>
+				Get the user unique identifier.
+			</description>
+		</method>
+		<method name="initialize" qualifiers="static">
+			<return type="void" />
+			<param index="0" name="appid" type="String" />
+			<param index="1" name="secret_key" type="String" />
+			<description>
+				Before fetch and post user data with public database, initialize application with id and secret key.
+				[param appid] and [param secret_key] can be obtained from the engine website through a developer account.
+			</description>
+		</method>
+		<method name="post_assets">
+			<return type="bool" />
+			<param index="0" name="assets" type="Dictionary" />
+			<param index="1" name="callback" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="post_data">
+			<return type="bool" />
+			<param index="0" name="data" type="Dictionary" />
+			<param index="1" name="sn" type="Variant" default="null" />
+			<description>
+				Post user data to public database.
+				[param data] are the data you want to post.
+				[param sn] is the serial number will pass though [signal post].
+			</description>
+		</method>
+	</methods>
+	<signals>
+		<signal name="fetch">
+			<param index="0" name="error" type="String" />
+			<param index="1" name="data" type="Dictionary" />
+			<param index="2" name="sn" type="String" />
+			<description>
+				Emited after [method fetch_data].
+			</description>
+		</signal>
+		<signal name="post">
+			<param index="0" name="error" type="String" />
+			<param index="1" name="data" type="Dictionary" />
+			<param index="2" name="sn" type="String" />
+			<description>
+				Emited after [method post_data].
+			</description>
+		</signal>
+	</signals>
+</class>

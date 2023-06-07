@@ -5,9 +5,9 @@
  *
  */
 #include "external_translation_server.h"
-#include "godot/core/error/error_macros.h"
-#include "godot/core/io/dir_access.h"
-#include "godot/core/os/os.h"
+#include "core/error/error_macros.h"
+#include "core/io/dir_access.h"
+#include "core/os/os.h"
 #include <core/config/project_settings.h>
 #include <core/io/file_access_memory.h>
 #include <core/io/translation_loader_po.h>

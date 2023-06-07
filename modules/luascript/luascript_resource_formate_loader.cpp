@@ -72,5 +72,7 @@ bool LuaScriptResourceFormatLoader::handles_type(const String &p_type) const {
 }
 
 String LuaScriptResourceFormatLoader::get_resource_type(const String &p_path) const {
-	return (p_path.get_extension().to_lower() == LUA_EXTENSION) ? LUA_TYPE : EMPTY_STRING;
+	List<String> extensions;
+	get_recognized_extensions(&extensions);
+	return extensions.find(p_path.get_extension().to_lower()) ? LUA_TYPE : EMPTY_STRING;
 }

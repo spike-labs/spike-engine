@@ -107,6 +107,15 @@ void SpikeFileSystemDock::_try_update_file_thumbnail(PackedStringArray resources
 	}
 }
 
+void SpikeFileSystemDock::_file_menu_check_uid_missing(PopupMenu *p_menu, const String &p_path) {
+	auto index = p_menu->get_item_index(FILE_COPY_UID);
+	if (index >= 0 && ResourceSaver::get_resource_id_for_path(p_path) == ResourceUID::INVALID_ID) {
+		p_menu->set_item_icon(index, get_theme_icon(SNAME("Reload"), SNAME("EditorIcons")));
+		p_menu->set_item_text(index, STTR("Update File"));
+		p_menu->set_item_id(index, UPDATE_FILE);
+	}
+}
+
 void SpikeFileSystemDock::update_file_thumbnail(const String &fpath) {
 	EditorResourcePreview::get_singleton()->call_deferred("queue_resource_preview", fpath, this, "_generate_file_thumbnail_done", Variant());
 }
@@ -200,6 +209,8 @@ void SpikeFileSystemDock::_item_mouse_selected(const Vector2 &p_pos, MouseButton
 				auto remove_ids = tree_popup->get_item_index(FILE_REMOVE);
 				if (remove_ids >= 0)
 					tree_popup->remove_item(remove_ids);
+			} else if (paths.size() == 1) {
+				_file_menu_check_uid_missing(tree_popup, paths[0]);
 			}
 		}
 
@@ -249,6 +260,9 @@ void SpikeFileSystemDock::_spike_file_list_item_clicked(int p_item, const Vector
 
 	if (!paths.is_empty()) {
 		_file_and_folders_fill_popup(file_list_popup, paths, searched_string.length() == 0);
+		if (paths.size() == 0) {
+			_file_menu_check_uid_missing(file_list_popup, paths[0]);
+		}
 	}
 
 	_create_custom_menus(file_list_popup);
@@ -276,28 +290,39 @@ void SpikeFileSystemDock::_spike_file_list_empty_clicked(const Vector2 &p_pos, M
 
 void SpikeFileSystemDock::_popup_index_pressed(int p_index, PopupMenu *popup) {
 	int id = popup->get_item_id(p_index);
-	if (id == 100 && IS_EMPTY(popup->get_item_submenu(p_index))) {
-		Variant validate = Variant(false);
-		Variant paths = Variant(selected_paths);
-		Callable callback = popup->get_item_metadata(p_index);
-		Callable::CallError ce;
-		Variant result;
-		if (popup->is_item_checkable(p_index)) {
-			Variant checked = popup->is_item_checked(p_index);
-			const Variant *args[] = { &validate, &checked, &paths };
-			callback.callp(args, 3, result, ce);
-			if (ce.error == Callable::CallError::CALL_OK) {
-				popup->set_item_checked(p_index, result);
-			}
-		} else {
-			const Variant *args[] = { &validate, &paths };
-			callback.callp(args, 2, result, ce);
-		}
+	switch (id) {
+		case CUSTOM_CALLBACK: {
+			if (IS_EMPTY(popup->get_item_submenu(p_index))) {
+				Variant validate = Variant(false);
+				Variant paths = Variant(selected_paths);
+				Callable callback = popup->get_item_metadata(p_index);
+				Callable::CallError ce;
+				Variant result;
+				if (popup->is_item_checkable(p_index)) {
+					Variant checked = popup->is_item_checked(p_index);
+					const Variant *args[] = { &validate, &checked, &paths };
+					callback.callp(args, 3, result, ce);
+					if (ce.error == Callable::CallError::CALL_OK) {
+						popup->set_item_checked(p_index, result);
+					}
+				} else {
+					const Variant *args[] = { &validate, &paths };
+					callback.callp(args, 2, result, ce);
+				}
 
-		if (ce.error != Callable::CallError::CALL_OK) {
-			String err = Variant::get_callable_error_text(callback, nullptr, 0, ce);
-			ERR_PRINT("Error calling execute: " + err);
-		}
+				if (ce.error != Callable::CallError::CALL_OK) {
+					String err = Variant::get_callable_error_text(callback, nullptr, 0, ce);
+					ERR_PRINT("Error calling execute: " + err);
+				}
+			}
+		} break;
+		case UPDATE_FILE: {
+			String path = selected_paths[0];
+			EditorFileSystem::get_singleton()->update_file(path);
+			EditorFileSystem::get_singleton()->scan();
+		} break;
+		default:
+			break;
 	}
 }
 
@@ -330,7 +355,7 @@ int SpikeFileSystemDock::_create_custom_menus(Node *p_root) {
 			if (submenu) {
 				if (index < 0) {
 					index = submenu->get_item_count();
-					submenu->add_item(TTR(item.menus[item.menus.size() - 1]), 100);
+					submenu->add_item(TTR(item.menus[item.menus.size() - 1]), CUSTOM_CALLBACK);
 				}
 				submenu->set_item_metadata(index, item.action);
 				submenu->set_item_icon(index, item.icon);
@@ -431,13 +456,4 @@ void SpikeFileSystemDock::_update_file_list(bool p_keep_selection) {
 			files->remove_item(index);
 		}
 	}
-}
-
-void SpikeFileSystemDock::_select_file(const String &p_path, bool p_select_in_favorites) {
-	Ref<ResourceFormatRecognizer> recognizer = ResourceRecognizer::get_singleton()->recognize(p_path);
-	if(recognizer.is_valid()) {
-		recognizer->open_editor(p_path);
-		return;
-	}
-	FileSystemDock::_select_file(p_path, p_select_in_favorites);
 }

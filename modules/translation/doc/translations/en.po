@@ -1,0 +1,298 @@
+# LANGUAGE translation of the Spike Engine class reference.
+# Copyright (c) 2007-2022 Juan Linietsky, Ariel Manzur.
+# Copyright (c) 2014-2022 Spike Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Spike source code.
+#
+# hongfeng.wu <hongfeng.wu0813@gmail.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: Spike Engine class reference\n"
+"Report-Msgid-Bugs-To: http://gitlab-ce.oasis.world/engine/spike\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: package_system/doc_classes/EditorExportDefination.xml
+msgid "Export resources filter by platform."
+msgstr ""
+
+#: package_system/doc_classes/EditorExportSettings.xml
+msgid "Base class of codeless export settings."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "System for package management."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "Get the status of the package."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "The singleton of this System."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "Check whether the plugin in the package is enabled."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "Enable or Disable the plugin in the package."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid ""
+"When the package is loaded, it will be triggered regardless of success or "
+"failure."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "Triggered when package removal fails."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "Triggered when the package starts to load."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "Triggered when all packages are loaded."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "The package is not configured."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "The package is configured, but has not yet been loaded."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "The configured package has been successfully loaded."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "Error occurred during package loading."
+msgstr ""
+
+#: package_system/doc_classes/EditorPackageSystem.xml
+msgid "The package is mark removed."
+msgstr ""
+
+#: spike/doc_classes/EditorUtils.xml
+msgid "Collection of editor utilities."
+msgstr ""
+
+#: spike/doc_classes/EditorUtils.xml
+msgid ""
+"Add a menu item that can be checked, for editor only. Do not support right "
+"click menu.\n"
+"[param callable] for other menu item require 1 argument:\n"
+"[codeblock]\n"
+"func check_menu(checked: bool):\n"
+"    if checked:\n"
+"        pass\n"
+"[/codeblock]\n"
+"Refer to [method add_menu_item]."
+msgstr ""
+
+#: spike/doc_classes/EditorUtils.xml
+msgid ""
+"Add a menu item for editor.\n"
+"[codeblock]\n"
+"func _ready():\n"
+"    # Add a menu item `custom` to Scene menu of main menu bar.\n"
+"    EditorUtils.add_menu_item(\"Scene/custom\", _custom_menu)\n"
+"\n"
+"    # Add a menu item `custom` to Project menu of main menu bar.\n"
+"    EditorUtils.add_menu_item(\"Project/custom\", _custom_menu)\n"
+"\n"
+"    # Add a menu item `custom` to Debug menu of main menu bar.\n"
+"    EditorUtils.add_menu_item(\"Debug/custom\", _custom_menu)\n"
+"\n"
+"    # Add a menu item `custom` to Editor menu of main menu bar.\n"
+"    EditorUtils.add_menu_item(\"Editor/custom\", _custom_menu)\n"
+"\n"
+"    # Add a menu item `custom` to Help menu of main menu bar.\n"
+"    EditorUtils.add_menu_item(\"Help/custom\", _custom_menu)\n"
+"\n"
+"    # Add a menu `Custom` to main menu bar, then add a menu item `Test` to "
+"it.\n"
+"    EditorUtils.add_menu_item(\"Custom/Test\", _custom_menu)\n"
+"\n"
+"    # Add a menu item `custom` to Right click menu of File System Dock.\n"
+"    EditorUtils.add_menu_item(\"FileSystem/custom\", right_click_menu)\n"
+"\n"
+"func _custom_menu():\n"
+"    pass\n"
+"\n"
+"func right_click_menu(validate: bool, paths: PackedStringArray):\n"
+"    if validate:\n"
+"        # In validate call, returns true to create this item or it will be "
+"ignore on menu popup.\n"
+"        return true\n"
+"[/codeblock]\n"
+"[param icon] is the menu icon."
+msgstr ""
+
+#: spike/doc_classes/EditorUtils.xml
+msgid ""
+"Add a radio menu item, for editor only. Do not support right click menu.\n"
+"Arguments usage refer to [method add_menu_check_item]."
+msgstr ""
+
+#: spike/doc_classes/EditorUtils.xml
+msgid "Open a panel to execute the command line and display the execution log."
+msgstr ""
+
+#: spike/doc_classes/EditorUtils.xml
+msgid "Remove a menu item."
+msgstr ""
+
+#: package_system/doc_classes/NativeWrapper.xml
+msgid "Native library interface wrapper."
+msgstr ""
+
+#: pck_runner/doc_classes/PCKRunner.xml
+msgid "Runtime Game Management."
+msgstr ""
+
+#: pck_runner/doc_classes/PCKRunner.xml
+msgid ""
+"Load another game's PCK file, and load its startup scene([code]application/"
+"run/main_scene[/code])."
+msgstr ""
+
+#: pck_runner/doc_classes/PCKSceneTree.xml
+msgid "A mainloop type to for [PCKRunner]."
+msgstr ""
+
+#: pck_runner/doc_classes/PCKSceneTree.xml
+msgid ""
+"PCK file of another game can be launch by [PCKRunner]. When the game call "
+"[method SceneTree.quit], the application will not stop but return to previus "
+"scene."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid "The user shared data module."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid ""
+"The user shared data module allows users to publicly access their "
+"application data after authorization. Then the user can authorize other "
+"applications to obtain user data for this application.\n"
+"This module relies on the [code]Spike Block Chain SDK[/code] software "
+"package. Import the package via AssetLib/Packages Panel.\n"
+"[codeblock]\n"
+"# Initialize application with app id and secret key.\n"
+"SharableUserData.initialize(\"[app id]\", \"[secret key]\")\n"
+"\n"
+"# Create a SharableUserData for each User.\n"
+"userdata = SharableUserData.new()\n"
+"userdata.authorize(\"[other app id]\", [\"name\", \"level\"])\n"
+"\n"
+"# Connect the signals as needed.\n"
+"userdata.post.connect(_on_post)\n"
+"userdata.fetch.connect(_on_fetch)\n"
+"\n"
+"# Post or fetch as needed.\n"
+"userdata.post_data({name = \"user\", level = 99 }, \"sn1\")\n"
+"userdata.fetch_data([], \"sn2\")\n"
+"[/codeblock]"
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid ""
+"Request authorization from the user to submit their application data to a "
+"public database.\n"
+"[param appid] is the application that require user authorization.\n"
+"[param fields] are the data fields that the user allowed to post."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid ""
+"Bind current user to shared data module.\n"
+"[param user] refer to a user object that provides the method [method get_id] "
+"to obtain user ID and method [method sign_message] to sign a string. (eg: a "
+"wallet instance)"
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid ""
+"Fetch user data from public database.\n"
+"[param keys] are the data fields that you want to fetch.\n"
+"[param sn] is the serial number will pass though [signal fetch]."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid "Get the application id."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid ""
+"[codeblock]\n"
+"SharableUserData.get_app_info(\"10000\", func(data):\n"
+"\tprint(\"data = \", data)\n"
+")\n"
+"[/codeblock]"
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid "Get the user unique identifier."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid ""
+"Before fetch and post user data with public database, initialize application "
+"with id and secret key.\n"
+"[param appid] and [param secret_key] can be obtained from the engine website "
+"through a developer account."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid ""
+"Post user data to public database.\n"
+"[param data] are the data you want to post.\n"
+"[param sn] is the serial number will pass though [signal post]."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid "Emited after [method fetch_data]."
+msgstr ""
+
+#: user_data/doc_classes/SharableUserData.xml
+msgid "Emited after [method post_data]."
+msgstr ""
+
+#: translation/doc_classes/TranslationPatchServer.xml
+msgid ""
+"Add a translation patch, \"patch\" can be a file path of type \"String\", an "
+"instance of type \"Transation\", or a byte stream of type \"PackedByteArray\""
+msgstr ""
+
+#: translation/doc_classes/TranslationPatchServer.xml
+msgid "Add a patch folder and traverse all patch files under the added folder"
+msgstr ""
+
+#: translation/doc_classes/TranslationPatchServer.xml
+msgid "Add CSV file extension for recognition read CSV translation patch"
+msgstr ""
+
+#: translation/doc_classes/TranslationPatchServer.xml
+msgid ""
+"Add GETTEXT file extension for recognition read GETTEXT translation patch"
+msgstr ""
+
+#: translation/doc_classes/TranslationPatchServer.xml
+msgid ""
+"Remove the translation patch, \"patch\" can be a file path of type \"String"
+"\", an instance of type \"Transation\", or a byte stream of type "
+"\"PackedByteArray\""
+msgstr ""
+
+#: translation/doc_classes/TranslationPatchServer.xml
+msgid ""
+"Remove a patch folder and traverse all patch files under the removed folder"
+msgstr ""

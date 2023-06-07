@@ -8,10 +8,4 @@
 	</description>
 	<tutorials>
 	</tutorials>
-	<signals>
-		<signal name="__pck_quited">
-			<description>
-			</description>
-		</signal>
-	</signals>
 </class>

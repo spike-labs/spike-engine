@@ -20,7 +20,6 @@ void PackageRegistryDownloader::_notification(int p_what) {
 }
 
 void PackageRegistryDownloader::_http_download_completed(int p_status, int p_code, const PackedStringArray &headers, const PackedByteArray &p_data) {
-
 	String status_text;
 	String host = remote_url;
 
@@ -109,7 +108,7 @@ void PackageRegistryDownloader::download(const String &url) {
 	}
 }
 
-void PackageRegistryDownloader::start_download(const String & remote_url, const String &download_file, const String &save_path) {
+void PackageRegistryDownloader::start_download(const String &remote_url, const String &download_file, const String &save_path) {
 	if (!is_inside_tree()) {
 		EditorPackageSystem::get_singleton()->add_child(this);
 	}
@@ -123,7 +122,6 @@ void PackageRegistryDownloader::start_download(const String & remote_url, const 
 	download(remote_url);
 }
 
-
 EditorPackageSourceRegistry::EditorPackageSourceRegistry(const String &name, const String &registry, const String &version) :
 		EditorPackageSource(name) {
 	download = nullptr;
@@ -136,7 +134,7 @@ String EditorPackageSourceRegistry::get_tag() {
 	return "registry:" + version;
 }
 
-Error EditorPackageSourceRegistry::fetch_source(const String &save_path, String& err_info) {
+Error EditorPackageSourceRegistry::fetch_source(const String &save_path, String &err_info) {
 	Error err = FAILED;
 	String download_file;
 	if (registry.find("://") < 0) {
@@ -152,9 +150,8 @@ Error EditorPackageSourceRegistry::fetch_source(const String &save_path, String&
 		}
 		auto remote_url = registry + repo_name + "/" + version + ".zip";
 		MessageQueue::get_singleton()->push_callable(
-			callable_mp(download, &PackageRegistryDownloader::start_download),
-			remote_url, download_file, save_path
-		);
+				callable_mp(download, &PackageRegistryDownloader::start_download),
+				remote_url, download_file, save_path);
 
 		while (!download->is_done()) {
 			int total = download->get_total_size();

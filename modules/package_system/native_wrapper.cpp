@@ -100,11 +100,13 @@ Error NativeWrapper::open_library(const String &lib_path) {
 		String load_path = ProjectSettings::get_singleton()->globalize_path(lib_path);
 #endif
 
-		String library_path;
-		Error err = OS::get_singleton()->open_dynamic_library(load_path, library, true, &library_path);
-		if (err != OK) {
-			ERR_PRINT("NativeWrapper dynamic library not found: " + library_path);
-			return err;
+		if (!IS_EMPTY(load_path)) {
+			String library_path;
+			Error err = OS::get_singleton()->open_dynamic_library(load_path, library, true, &library_path);
+			if (err != OK) {
+				ERR_PRINT("NativeWrapper dynamic library not found: " + library_path);
+				return err;
+			}
 		}
 	}
 	return OK;

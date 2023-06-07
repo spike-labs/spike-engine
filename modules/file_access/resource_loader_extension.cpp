@@ -1,5 +1,9 @@
-/* resource_loader_extension.cpp */
-
+/**
+ * resource_loader_extension.cpp
+ *
+ * This file is part of Spike engine, a modification and extension of Godot.
+ *
+ */
 #include "core/object/script_language.h"
 #include "modules/gdscript/gdscript.h"
 #include "core/io/dir_access.h"

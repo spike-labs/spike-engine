@@ -4,6 +4,7 @@
  * This file is part of Spike engine, a modification and extension of Godot.
  *
  */
+#include "account/account_manage.h"
 #include "editor/editor_command_palette.h"
 #include "editor/editor_scale.h"
 #include "editor/editor_settings.h"
@@ -21,6 +22,8 @@ void SpikeEditorNode::_init_help_menu() {
 
 	help_menu->add_separator();
 	help_menu->add_icon_shortcut(link_icon, ED_SHORTCUT_AND_COMMAND("editor/spike_website", STTR("Spike Website")), HELP_SPIKE_WEBSITE);
+	help_menu->add_icon_shortcut(link_icon, ED_SHORTCUT_AND_COMMAND("editor/spike_developer", STTR("Spike Developer")), HELP_SPIKE_DEVELOPER);
+	help_menu->add_icon_item(link_icon, STTR("Enter Decentralized Network..."), HELP_SPIKE_WEB3);
 	help_menu->add_separator();
 
 	bool global_menu = !bool(EDITOR_GET("interface/editor/use_embedded_menu")) && DisplayServer::get_singleton()->has_feature(DisplayServer::FEATURE_GLOBAL_MENU);
@@ -63,6 +66,29 @@ void SpikeEditorNode::_help_menu_option(int p_option) {
 		case HELP_SPIKE_WEBSITE:
 			OS::get_singleton()->shell_open("https://www.spike.fun");
 			break;
+		case HELP_SPIKE_DEVELOPER:
+#ifdef DEBUG_ENABLED
+			OS::get_singleton()->shell_open("https://spike-dev-center.vercel.app/");
+#else
+#endif
+		case HELP_SPIKE_WEB3: {
+			if (_account_manage == nullptr) {
+				List<StringName> inheriters;
+				ScriptServer::get_inheriters_list(AccountManage::get_class_static(), &inheriters);
+				if (inheriters.size()) {
+					Ref<Script> script = ResourceLoader::load(ScriptServer::get_global_class_path(inheriters[0]));
+					if (script.is_valid()) {
+						_account_manage = Object::cast_to<AccountManage>(script->call("new"));
+					}
+				}
+				if (_account_manage == nullptr) {
+					_account_manage = memnew(AccountManage);
+				}
+				gui_base->add_child(_account_manage);
+			}
+			Object::cast_to<AccountManage>(_account_manage)->popup_web3_account();
+		} break;
+
 		case HELP_SUPPORT_SPIKE_DEVELOPMENT:
 			// OS::get_singleton()->shell_open("https://godotengine.org/donate");
 			break;
@@ -70,4 +96,8 @@ void SpikeEditorNode::_help_menu_option(int p_option) {
 		default:
 			break;
 	}
+}
+
+Ref<RefCounted> SpikeEditorNode::get_web3_user() {
+	return Object::cast_to<AccountManage>(_account_manage)->get_user();
 }

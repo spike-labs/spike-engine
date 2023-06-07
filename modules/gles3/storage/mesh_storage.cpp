@@ -961,6 +961,10 @@ void MeshStorage::mesh_instance_check_for_update(RID p_mesh_instance) {
 	}
 }
 
+void MeshStorage::mesh_instance_set_canvas_item_transform(RID p_mesh_instance, const Transform2D &p_transform) {
+
+}
+
 void MeshStorage::update_mesh_instances() {
 	while (dirty_mesh_instance_weights.first()) {
 		MeshInstance *mi = dirty_mesh_instance_weights.first()->self();

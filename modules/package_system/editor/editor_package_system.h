@@ -62,8 +62,7 @@ private:
 	};
 
 	static EditorPackageSystem *singleton;
-	Thread _fetch_thread;
-	SafeFlag _thread_done;
+	SafeFlag _thread_working;
 
 	Mutex _eps_mutex;
 	bool _cfg_dirty;
@@ -142,33 +141,9 @@ protected:
 		return package_name;
 	}
 
-	void _enable_plugin(const String &p_plugin_path, String pkg_name = String()) {
-		if (FileAccess::exists(p_plugin_path)) {
-			if (IS_EMPTY(pkg_name)) {
-				pkg_name = p_plugin_path.get_base_dir().get_file();
-			}
-
-			_set_package_plugin_enabled(p_plugin_path, true);
-
-			bool success = _enabled_plugins_map.has(p_plugin_path);
-			String msg = vformat("%s'%s' %s", STTR("Active plugin: "), pkg_name, success ? STTR("success") : STTR("fail"));
-			EditorNode::get_singleton()->get_log()->add_message(msg, EditorLog::MSG_TYPE_EDITOR);
-		}
-	}
-
-	void _disable_plugin(const String &p_plugin_path, String pkg_name = String()) {
-		if (FileAccess::exists(p_plugin_path)) {
-			_set_package_plugin_enabled(p_plugin_path, false);
-			if (IS_EMPTY(pkg_name)) {
-				pkg_name = p_plugin_path.get_base_dir().get_file();
-			}
-			EditorNode::get_singleton()->get_log()->add_message(STTR("Deactive plugin: ") + pkg_name, EditorLog::MSG_TYPE_EDITOR);
-		}
-	}
-
 	void _scan_packages() {
 		_require_packages_dir();
-		if (_update_config() && !_fetch_thread.is_started()) {
+		if (_update_config() && !_thread_working.is_set()) {
 			update_packages();
 		}
 	}
@@ -185,13 +160,13 @@ protected:
 	//void _filesystem_changed();
 	void _sources_changed(bool exist);
 	void _resources_changed(const Vector<String> &p_resources);
-	Error _handle_packages_source(const Map<String, String> &p_packages);
+	Error _handle_packages_source();
 	Error _delete_package_folder(const String &folder_path);
 	void _remove_packages_from_disk(const PackedStringArray &path);
 	void _update_autoload_from_disk(const String &path_info);
 
+	void _source_handler();
 	static uint64_t get_modified_time(const String &dir_path);
-	static void _source_handler(void *p_user);
 	static void _bind_methods();
 
 	void _set_package_plugin_enabled(const String &p_name_path, bool p_enabled);
@@ -200,10 +175,37 @@ public:
 	EditorPackageSystem();
 	~EditorPackageSystem();
 
+	void _enable_plugin(const String &p_plugin_path, String pkg_name = String()) {
+		if (FileAccess::exists(p_plugin_path)) {
+			if (IS_EMPTY(pkg_name)) {
+				pkg_name = p_plugin_path.get_base_dir().get_file();
+			}
+
+			_set_package_plugin_enabled(p_plugin_path, true);
+
+			bool success = _enabled_plugins_map.has(p_plugin_path);
+			ED_MSG(STTR("Active plugin: ") + "'%s' %s", pkg_name, success ? STTR("success") : STTR("fail"));
+		}
+	}
+
+	void _disable_plugin(const String &p_plugin_path, String pkg_name = String()) {
+		if (FileAccess::exists(p_plugin_path)) {
+			_set_package_plugin_enabled(p_plugin_path, false);
+			if (IS_EMPTY(pkg_name)) {
+				pkg_name = p_plugin_path.get_base_dir().get_file();
+			}
+			ED_MSG(STTR("Deactive plugin: ") + "%s", pkg_name);
+		}
+	}
+
 	void update_packages(const String &p_reset = String());
 	PackageStatus get_package_status(const String &p_name_path);
 	bool is_package_plugin_enabled(const String &p_name_path);
 	void set_package_plugin_enabled(const String &p_name_path, const bool p_enabled);
+	void install_package(const String &p_package, const Variant &p_value);
+	void uninstall_package(const String &p_package);
+	String get_package_source(const String &p_package);
+	String get_package_version(const String &p_package);
 
 	static EditorPackageSystem *get_singleton() { return singleton; }
 };

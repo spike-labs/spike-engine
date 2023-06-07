@@ -6,16 +6,20 @@
  */
 #include "register_types.h"
 
+#include "configuration/resource_format_configurable.h"
+#include "core/config/project_settings.h"
 #include "core/version.h"
 #include "engine_utils.h"
-#include "spike/external_translation_server.h"
+#include "servers/display_server_universal.h"
 #include "spike/version.h"
 #include "spike_define.h"
-
+#include "translation/translation_patch_server.h"
 #include INC_CLASS_DB
+
+/******************************* EDITOR INC *******************************/
 #ifdef TOOLS_ENABLED
+#include "editor/account/account_manage.h"
 #include "editor/editor_plugin.h"
-#include "editor/resource_recognizer.h"
 #include "editor/spike_editor_node.h"
 #include "editor/spike_editor_utils.h"
 #include "editor/spike_format_loader.h"
@@ -30,14 +34,12 @@ static void spike_editor_init() {
 }
 
 #endif
-#include "core/config/project_settings.h"
-#include "servers/display_server_universal.h"
-#include "spike/external_translation_server.h"
 
 class ModSpikeEngine : public SpikeModule {
 public:
 	static void core(bool do_init) {
 		if (do_init) {
+			MEM_REPLACE_OBJ(ResourceFormatLoaderBinary::singleton, ResourceFormatLoaderBinary, OverrideFormatLoaderBinary);
 			GDREGISTER_ABSTRACT_CLASS(EngineUtils);
 		}
 	}
@@ -48,16 +50,15 @@ public:
 			GLOBAL_DEF_RST(gl_skinning, 0);
 			ProjectSettings::get_singleton()->set_custom_property_info(PropertyInfo(Variant::INT, gl_skinning, PROPERTY_HINT_ENUM, "Default,Software Skinning"));
 			DisplayServerUniversal::override_create_func();
-			GDREGISTER_ABSTRACT_CLASS(ExternalTranslationServer);
 		} else {
 		}
 	}
 
 	static void scene(bool do_init) {
 		if (do_init) {
-
+			// ClassDB::register_class<TransposedTexture>();
+			MEM_REPLACE_OBJ(ResourceFormatLoaderText::singleton, ResourceFormatLoaderText, OverrideFormatLoaderText);
 		} else {
-			
 		}
 	}
 
@@ -65,6 +66,7 @@ public:
 	static void editor(bool do_init) {
 		if (do_init) {
 			GDREGISTER_ABSTRACT_CLASS(EditorUtils);
+			GDREGISTER_CLASS(AccountManage);
 			EditorNode::add_init_callback(&spike_editor_init);
 		} else {
 			REMOVE_FORMAT_LOADER(final_loader4uid);
@@ -76,16 +78,18 @@ public:
 IMPL_SPIKE_MODULE(spike, ModSpikeEngine)
 
 extern Object *create_godot_object(const void *p_class) {
+#ifdef TOOLS_ENABLED
 	if (EditorNode::get_class_ptr_static() == p_class) {
 		return memnew(SpikeEditorNode);
 	}
 
-	if (TranslationServer::get_class_ptr_static() == p_class) {
-		return memnew(ExternalTranslationServer);
-	}
-
 	if (ProjectManager::get_class_ptr_static() == p_class) {
 		return memnew(SpikeProjectManager);
+	}
+#endif
+
+	if (TranslationServer::get_class_ptr_static() == p_class) {
+		return memnew(TranslationPatchServer);
 	}
 
 	return nullptr;

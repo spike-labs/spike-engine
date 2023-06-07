@@ -5,8 +5,14 @@ def can_build(env, platform):
 def configure(env):
     pass
 
+
 def get_doc_classes():
-	return ["NativeWrapper", "EditorExportSettings", "EditorExportDefination", "EditorPackageSystem"]
+    return ["NativeWrapper",
+            "EditorExportSettings",
+            "EditorExportDefination",
+            "EditorPackageSystem",
+            "ModularPackage"]
+
 
 def get_doc_path():
-	return "doc_classes"
+    return "doc_classes"

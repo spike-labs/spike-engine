@@ -18,6 +18,11 @@ ResourceUID::ID SpikeFormatLoader::get_resource_uid(const String &p_path) const 
 bool SpikeFormatLoader::get_uid(const String &p_path, ResourceUID::ID &r_uid) {
 	bool is_created = false;
 	r_uid = ResourceUID::INVALID_ID;
+
+	if (!FileAccess::exists(p_path)) {
+		return false;
+	}
+
 	ResourceUID::ID cache_uid = ResourceUID::INVALID_ID, save_uid = ResourceUID::INVALID_ID;
 
 	// Seek uid from cache at first
@@ -37,6 +42,7 @@ bool SpikeFormatLoader::get_uid(const String &p_path, ResourceUID::ID &r_uid) {
 	if (cfg->has_section_key(SECTION_UID, file_name)) {
 		save_uid = ResourceUID::get_singleton()->text_to_id(cfg->get_value(SECTION_UID, file_name));
 	}
+
 	if (cache_uid != ResourceUID::INVALID_ID) {
 		r_uid = cache_uid;
 	} else if (save_uid != ResourceUID::INVALID_ID) {

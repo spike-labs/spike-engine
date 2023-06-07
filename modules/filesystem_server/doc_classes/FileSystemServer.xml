@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="FileSystemServer" inherits="Object" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_provider">
+			<return type="int" />
+			<param index="0" name="provider" type="FileProvider" />
+			<description>
+			</description>
+		</method>
+		<method name="file_exists">
+			<return type="bool" />
+			<param index="0" name="path" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_provider" qualifiers="const">
+			<return type="FileProvider" />
+			<param index="0" name="index" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_provider_count" qualifiers="const">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="has_provider" qualifiers="const">
+			<return type="bool" />
+			<param index="0" name="provider" type="FileProvider" />
+			<description>
+			</description>
+		</method>
+		<method name="move_provider">
+			<return type="void" />
+			<param index="0" name="provider" type="FileProvider" />
+			<param index="1" name="to_index" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="open" qualifiers="const">
+			<return type="FileAccess" />
+			<param index="0" name="path" type="String" />
+			<param index="1" name="mode_flags" type="int" enum="FileAccess.ModeFlags" />
+			<description>
+			</description>
+		</method>
+		<method name="pop_current_provider">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="push_current_provider">
+			<return type="void" />
+			<param index="0" name="provider" type="FileProvider" />
+			<description>
+			</description>
+		</method>
+		<method name="remove_provider">
+			<return type="void" />
+			<param index="0" name="provider" type="FileProvider" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

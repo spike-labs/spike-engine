@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ProjectEnvironment" inherits="RefCounted" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_global_classes" qualifiers="const">
+			<return type="Dictionary[]" />
+			<description>
+			</description>
+		</method>
+		<method name="get_project_setting" qualifiers="const">
+			<return type="Variant" />
+			<param index="0" name="setting" type="String" />
+			<param index="1" name="default_value" type="Variant" default="null" />
+			<description>
+			</description>
+		</method>
+		<method name="get_project_settings" qualifiers="const">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="get_resource_paths" qualifiers="const">
+			<return type="PackedStringArray" />
+			<description>
+			</description>
+		</method>
+		<method name="get_unique_ids" qualifiers="const">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

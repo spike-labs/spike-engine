@@ -1,3 +1,7 @@
+/**
+ * This file is part of Lua binding for Godot Engine.
+ *
+ */
 #include "godot_lua_convert_api.h"
 
 Object *lua_to_godot_object(lua_State *L, int pos, bool *valid) {
@@ -110,6 +114,8 @@ Variant lua_to_godot_variant(lua_State *L, int pos) {
 					return *var;
 				break;
 			}
+		case LUA_TNIL:
+			return Variant();
 		default:
 			const char *str = luaL_tolstring(L, -1, nullptr);
 			lua_pop(L, 1);

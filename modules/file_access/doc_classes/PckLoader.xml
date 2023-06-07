@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="PckLoader" inherits="RefCounted" version="4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="load_pack" qualifiers="static">
+			<return type="bool" />
+			<param index="0" name="pack" type="String" />
+			<param index="1" name="replace_files" type="bool" default="true" />
+			<param index="2" name="offset" type="int" default="0" />
+			<description>
+			</description>
+		</method>
+		<method name="load_pack_with_key" qualifiers="static">
+			<return type="bool" />
+			<param index="0" name="pack" type="String" />
+			<param index="1" name="key" type="String" />
+			<param index="2" name="replace_files" type="bool" default="true" />
+			<param index="3" name="offset" type="int" default="0" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

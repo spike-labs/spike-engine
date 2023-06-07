@@ -1,3 +1,7 @@
+/**
+ * This file is part of Lua binding for Godot Engine.
+ *
+ */
 #include "luascript_export_plugin.h"
 
 #include "luascript/luascript.h"
@@ -15,26 +19,29 @@ void LuaScriptExportPlugin::_export_file(const String &p_path, const String &p_t
 		return;
 
 	// TODO: check if export lua script as bytecode.
+	const Ref<EditorExportPreset> &preset = get_export_preset();
+	String script_key = preset.is_valid() ? preset->get_script_encryption_key() : String();
+	if (!IS_EMPTY(script_key)) {
+		Error error;
+		String code = FileAccess::get_file_as_string(p_path, &error);
+		if (error != OK) {
+			DLog("get_file_as_string NOT OK(%d): '%s'", error, p_path);
+			return;
+		}
 
-	Error error;
-	String code = FileAccess::get_file_as_string(p_path, &error);
-	if (error != OK) {
-		DLog("get_file_as_string NOT OK(%d): '%s'", error, p_path);
-		return;
+		auto L = LUA_STATE;
+		auto source_str = code.utf8();
+		GD_STR_HOLD(res_path, p_path);
+		int ret = luaL_loadbuffer(L, source_str.get_data(), source_str.length(), res_path);
+		if (ret != LUA_OK) {
+			DLog("luaL_loadbuffer NOT OK(%d): '%s'", error, p_path);
+			return;
+		}
+
+		Vector<uint8_t> file;
+		lua_dump(L, spike_lua_Writer, &file, 0);
+		lua_pop(L, 1);
+
+		add_file(p_path.get_basename() + ".luac", file, true);
 	}
-
-	auto L = LUA_STATE;
-	auto source_str = code.utf8();
-	GD_STR_HOLD(res_path, p_path);
-	int ret = luaL_loadbuffer(L, source_str.get_data(), source_str.length(), res_path);
-	if (ret != LUA_OK) {
-		DLog("luaL_loadbuffer NOT OK(%d): '%s'", error, p_path);
-		return;
-	}
-
-	Vector<uint8_t> file;
-	lua_dump(L, spike_lua_Writer, &file, 0);
-	lua_pop(L, 1);
-
-	add_file(p_path.get_basename() + ".luac", file, true);
 }
